@@ -35,15 +35,8 @@ export class BarLog extends Component {
 
             return (
                 <ul className="uk-navbar-nav" id="loginSM">
-                    <li>
-                        <a data-uk-toggle="target: #offcanvas-nav">{props.name}<span data-uk-icon="icon: chevron-down;"></span></a>
-                        <div className="uk-navbar-dropdown">
-                            <ul className="uk-nav uk-navbar-dropdown-nav">
-                                <li><Link to="/Profile">Profile</Link></li>
-                                <li><Link onClick={logout}>Logout</Link></li>
-                            </ul>
-                        </div>
-                    </li>
+                    <li><Link to="/Profile">{props.name}</Link></li>
+                    <li><Link onClick={logout}>Logout</Link></li>
                 </ul>
             )
         }
