@@ -5,21 +5,35 @@ function Sign() {
         document.title = 'Comptable — Sign UP'
         document.getElementById('about').classList.remove('uk-active')
         document.getElementById('home').classList.remove('uk-active')
-    })
+      })
+      let ok=false
     function isTheSame(){
       var pass=document.getElementById('password')
       var pass1=document.getElementById('passwordConf')
-      if(pass.value===pass1.value){
-        pass.classList.add('uk-form-success')
-        pass1.classList.add('uk-form-success')
-        pass.classList.remove('uk-form-danger')
-        pass1.classList.remove('uk-form-danger')
-      }else{
-        pass.classList.remove('uk-form-success')
-        pass1.classList.remove('uk-form-success')
-        pass.classList.add('uk-form-warning')
-        pass1.classList.add('uk-form-danger')
+      if(pass.value.length >= 8){
+        if(pass.value===pass1.value){
+          pass.classList.remove('uk-form-warning')
+          pass1.classList.remove('uk-form-warning')
+          pass.classList.add('uk-form-success')
+          pass1.classList.add('uk-form-success')
+          document.getElementById('error').innerText=""
+          ok=true
+        }else{
+          pass.classList.remove('uk-form-success')
+          pass1.classList.remove('uk-form-success')
+          pass.classList.add('uk-form-warning')
+          pass1.classList.add('uk-form-warning')
+          document.getElementById('error').innerText="Using different passwords"
+          document.getElementById('error').style.color="#ffb700"
+        }
       }
+    }
+    function ValidateForm(){
+      var butt = document.getElementById('submit')
+      if(ok===true){
+        butt.removeAttribute('disabled')
+      }
+      
     }
     function changState(){
       var pass=document.getElementById('password')
@@ -36,11 +50,13 @@ function Sign() {
       if(pass.value.length < 8){
         pass.classList.add('uk-form-danger')
         pass1.classList.add('uk-form-danger')
+        document.getElementById('error').innerText="Password must be longer"
+        document.getElementById('error').style.color="red"
       }else{
         pass.classList.remove('uk-form-danger')
         pass1.classList.remove('uk-form-danger')
+        document.getElementById('error').innerText=""
       }
-      
     }
     function handleSubmit(event){
 
@@ -48,7 +64,7 @@ function Sign() {
   return (
     <div className="uk-padding">
       <legend align="center" className="uk-margin uk-legend">Sign up</legend>
-      <form align="center" className="uk-padding  uk-grid-small" data-uk-grid onSubmit={handleSubmit}>
+      <form method="post" align="center" className="uk-padding  uk-grid-small" data-uk-grid onSubmit={handleSubmit}>
             <div className="uk-width-1-2@s">
               <div data-uk-grid className="uk-grid-small uk-child-width-1-2">
                 <div>
@@ -75,12 +91,13 @@ function Sign() {
                   <input className="uk-input" placeholder="Password" onChange={changState} id="password" type="password"/>
                 </div>
                 <div>
-                  <input className="uk-input" placeholder="Confirm Password" onChange={isTheSame} id="passwordConf" type="password"/>
+                  <input className="uk-input" placeholder="Confirm Password" onChange={isTheSame} id="passwordConf" type="password"/> 
                 </div>
+                <span id="error"></span>
               </div>
             </div>
             <div className="uk-width-1-1@s">
-              <button type="submit" id='submit' className="uk-margin uk-button uk-button-success">Sign up</button>
+              <button type="submit" onClick={ValidateForm} id='submit' className="uk-margin uk-button uk-button-success">Sign up</button>
             </div>
       </form>
       </div>
