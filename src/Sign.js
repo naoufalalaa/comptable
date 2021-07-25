@@ -10,9 +10,15 @@ function Sign() {
       var pass=document.getElementById('password')
       var pass1=document.getElementById('passwordConf')
       if(pass.value===pass1.value){
+        pass.classList.add('uk-form-success')
         pass1.classList.add('uk-form-success')
+        pass.classList.remove('uk-form-danger')
+        pass1.classList.remove('uk-form-danger')
       }else{
-        pass.classList.add('uk-form-danger')
+        pass.classList.remove('uk-form-success')
+        pass1.classList.remove('uk-form-success')
+        pass.classList.add('uk-form-warning')
+        pass1.classList.add('uk-form-danger')
       }
     }
     function changState(){
@@ -29,9 +35,12 @@ function Sign() {
       }
       if(pass.value.length < 8){
         pass.classList.add('uk-form-danger')
-        document.getElementById('submit').setAttribute('disabled','')
-
+        pass1.classList.add('uk-form-danger')
+      }else{
+        pass.classList.remove('uk-form-danger')
+        pass1.classList.remove('uk-form-danger')
       }
+      
     }
     function handleSubmit(event){
 
