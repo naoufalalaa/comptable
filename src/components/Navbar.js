@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import logo from '../logo512.png'
 import BarLog from './BarLog'
 import BarLogMob from './BarLogMob'
+import BarLogMob1 from './BarLogMob1'
 
 export class Navbar extends Component {
     
@@ -53,9 +54,9 @@ export class Navbar extends Component {
                 </div>
                 <nav className="uk-navbar uk-navbar-container uk-navbar-transparent uk-hidden@m">
                     <div className="uk-navbar-left" data-uk-toggle="target: #offcanvas-nav">
-                        <Link className="uk-navbar-toggle">
+                        <a className="uk-navbar-toggle">
                             <span data-uk-navbar-toggle-icon></span> <span className="uk-margin-small-left">Menu</span>
-                        </Link>
+                        </a>
                     </div>
                     
                     <div className="uk-navbar-right">
@@ -66,18 +67,22 @@ export class Navbar extends Component {
 
                 <div id="offcanvas-nav" data-uk-offcanvas="overlay: true">
                     <div className="uk-offcanvas-bar">
-                    <img src={logo} width="50px" alt=""/>
+                        <div align="center" className="uk-margin-large">
+                            <img src={logo} width="100px" alt=""/>
+                        </div>
 
                         <ul className="uk-nav uk-nav-default" id="navv">
-                            <li className="uk-active"><Link>Active</Link></li>
+                            <li><Link to="/">Home</Link></li>
                             <li className="uk-parent">
-                                <a href="">Créer</a>
+                                <a>Créer</a>
                                 <ul className="uk-nav-sub">
-                                    <li><Link>Sub item</Link></li>
-                                    <li><Link>Sub item</Link></li>
+                                    <li><a>Sub item</a></li>
+                                    <li><a>Sub item</a></li>
                                 </ul>
                             </li>
-                            <li className="uk-nav-header">Header</li>
+                            <li><Link to="/about">About</Link></li>
+                            <li className="uk-margin uk-nav-divider"></li>
+                            <BarLogMob1 />
                         </ul>
 
                     </div>
