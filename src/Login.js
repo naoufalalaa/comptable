@@ -29,8 +29,13 @@ function Login() {
         document.getElementById('welcome').innerHTML="<h1>Connectez-vous</h1><p>Resez en contact avec votre conseillé et votre équipe comptable.</p>"
     })
     function login(){
-        setCookie("session",document.getElementById('session').value,30)
-        window.location.replace('/')
+        const user = document.getElementById('user').value
+        const pass = document.getElementById('password').value
+        if(user !== '' && pass !== ''){
+            const token = user+pass
+            setCookie("session",token,30)
+            window.location.replace('/')
+        }
     }
     function isLogged(){
         if(getCookie("session")){
