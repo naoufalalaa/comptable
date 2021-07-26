@@ -32,7 +32,7 @@ function Login() {
         const user = document.getElementById('user').value
         const pass = document.getElementById('password').value
         if(user !== '' && pass !== ''){
-            const token = user+pass
+            const token = user+'-'+pass
             setCookie("session",token,30)
             window.location.replace('/')
         }

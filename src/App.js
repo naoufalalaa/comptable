@@ -5,6 +5,7 @@ import Home from './Home'
 import About from './About'
 import Login from './Login'
 import Sign from './Sign'
+import Profile from './Profile'
 import Footer from './components/Footer'
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route  path="/about" component={About} />
         <Route  path="/login" component={Login} />
         <Route  path="/sign" component={Sign} />
+        <Route  path="/Profile" component={Profile} />
       </Switch>
       <Footer/>
     </Router>
