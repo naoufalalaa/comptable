@@ -18,10 +18,10 @@ function Profile() {
 
     
     useEffect( () => {
-        document.title = 'Comptable — Login'
+        document.title = 'Comptable — Profile'
         document.getElementById('about').classList.remove('uk-active')
         document.getElementById('home').classList.remove('uk-active')
-        document.getElementById('welcome').innerHTML="<h1>Connectez-vous</h1><p>Resez en contact avec votre conseillé et votre équipe comptable.</p>"
+        document.getElementById('welcome').innerHTML=""
     })
     
     function isLogged(){

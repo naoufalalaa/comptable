@@ -1,5 +1,11 @@
 import React, { useEffect }  from 'react';
+import Welcome from './components/Welcome'
 function Login() {
+    useEffect( () => {
+        document.title = 'Comptable — Login'
+        document.getElementById('about').classList.remove('uk-active')
+        document.getElementById('home').classList.remove('uk-active')
+    })
     function getCookie(cname) {
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
@@ -22,12 +28,7 @@ function Login() {
         var expires = "expires="+ d.toUTCString();
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
-    useEffect( () => {
-        document.title = 'Comptable — Login'
-        document.getElementById('about').classList.remove('uk-active')
-        document.getElementById('home').classList.remove('uk-active')
-        document.getElementById('welcome').innerHTML="<h1>Connectez-vous</h1><p>Resez en contact avec votre conseillé et votre équipe comptable.</p>"
-    })
+    
     function login(){
         const user = document.getElementById('user').value
         const pass = document.getElementById('password').value
@@ -47,6 +48,7 @@ function Login() {
     if(!isLogged()){
         return (
             <div align="center">
+                <Welcome/>
                 <form className="uk-padding">
                 <h3>Connectez-vous</h3>
 

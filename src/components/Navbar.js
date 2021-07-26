@@ -87,17 +87,7 @@ export class Navbar extends Component {
 
                     </div>
                 </div>
-                <div className="uk-section uk-light">
-                    <div align="center" id="welcome" className="uk-container">
-            
-                        <h1>Outils Comptable</h1>
-            
-                        <p>Utilisez nos outils pour avoir un suivi en temps réel sur l'état financier de votre entreprise.</p>
-            
-                        <small>SARL / SASU / SAS / EURL / SCI / Startup ... </small>
-                        
-                    </div>
-                </div>
+
           </div>
         )
     }

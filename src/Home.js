@@ -2,10 +2,14 @@ import React, { useEffect } from 'react'
 import magic from './assets/img/magic.png'
 import flash from './assets/img/flash.png'
 import {Link} from 'react-router-dom'
+import Welcome from './components/Welcome'
  
 const Home = ()=> {
 
-    useEffect( () => document.title='Comptable du Coins')
+    useEffect( () => {
+        document.title='Comptable du Coins'
+    }
+    )
     function showG(){
         if(document.getElementById('Guide')){
             document.getElementById('Guide').classList.toggle("none")
@@ -23,6 +27,7 @@ const Home = ()=> {
     }
     return (
         <div className="Home">
+            <Welcome/>
             <div className="uk-child-width-1-2@s uk-padding" data-uk-grid data-uk-parallax="y:-10">
 
                 <div align="center">
