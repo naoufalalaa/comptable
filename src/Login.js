@@ -41,9 +41,26 @@ function Login() {
     }
     if(!isLogged()){
         return (
-            <div>
-                <input type="text" id="session" placeholder="Session" />
-                <button onClick={login}>Connect</button>
+            <div align="center">
+                <form className="uk-padding">
+                <h3>Connectez-vous</h3>
+
+                    <div className="uk-margin">
+                        <div className="uk-inline uk-width-1-2">
+                            <span className="uk-form-icon" uk-icon="icon: user"></span>
+                            <input className="uk-input" id="user" type="text"/>
+                        </div>
+                    </div>
+
+                    <div className="uk-margin">
+                        <div className="uk-inline uk-width-1-2">
+                            <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                            <input className="uk-input" id="password" type="password"/>
+                        </div>
+                    </div>
+                    <button onClick={login} className="uk-button uk-button-success-outline uk-width-1-4">Connectez-vous</button>
+
+                </form>
             </div>
         )
     }

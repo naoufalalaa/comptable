@@ -7,7 +7,7 @@ function Sign() {
         document.getElementById('home').classList.remove('uk-active')
       })
       let ok=false
-    function isTheSame(){
+      function isTheSame(){
       var pass=document.getElementById('password')
       var pass1=document.getElementById('passwordConf')
       if(pass.value.length >= 8){
@@ -28,13 +28,8 @@ function Sign() {
         }
       }
     }
-    function ValidateForm(){
-      var butt = document.getElementById('submit')
-      if(ok===true){
-        butt.removeAttribute('disabled')
-      }
-      
-    }
+    
+    
     function changState(){
       var pass=document.getElementById('password')
       var pass1=document.getElementById('passwordConf')
@@ -59,7 +54,16 @@ function Sign() {
       }
     }
     function handleSubmit(event){
-
+      if(ok){
+        var data= {
+          "firstName" : document.getElementById('firstName').value ,
+          "lastName" : document.getElementById('lastName').value ,
+          "email" : document.getElementById('email').value ,
+          "password" : document.getElementById('password').value ,
+          "phone" : document.getElementById('phone').value
+        }
+      }
+      console.log(data)
     }
   return (
     <div className="uk-padding">
@@ -76,14 +80,10 @@ function Sign() {
               </div>
             </div>
             <div className="uk-width-1-2@s">    
-              <input className="uk-input" type="text" placeholder="E-mail address" id='email' />
+              <input className="uk-input" type="email" placeholder="E-mail address" id='email' />
             </div>
             <div className="uk-width-1-2@s">
-              <select id="type" className="uk-select">
-                  <option>Type d'entreprise</option>
-                  <option>S.A.R.L</option>
-                  <option>Option 02</option>
-              </select>
+              <input className="uk-input" type="text" placeholder="+212 666-666666" id='phone' />
             </div>
             <div className="uk-width-1-2@s">
               <div data-uk-grid className="uk-grid-small uk-child-width-1-2">
@@ -97,7 +97,7 @@ function Sign() {
               </div>
             </div>
             <div className="uk-width-1-1@s">
-              <button type="submit" onClick={ValidateForm} id='submit' className="uk-margin uk-button uk-button-success">Sign up</button>
+              <button type="submit" id='submit' className="uk-margin uk-button uk-button-success">Sign up</button>
             </div>
       </form>
       </div>
