@@ -28,10 +28,10 @@ export class Sign extends Component  {
         }
         setCookie("sessionT",response.data.token,30)
         setCookie("sessionID",response.data.id,30)
-        document.getElementById('msg').innerHTML="<div className='uk-alert-sucess' data-uk-alert><p>L'utilisateur a bien été ajouté.</p></div>"
+        document.getElementById('msg').innerHTML="<div className='uk-alert-sucess' data-uk-alert><a class='uk-alert-close' data-uk-close></a><p>L'utilisateur a bien été ajouté.</p></div>"
         window.location.replace('/Profile')
       }).catch(err=>{console.log(err)
-        document.getElementById('msg').innerHTML="<div className='uk-alert-danger' data-uk-alert><p>Erreur, l'utilisateur n'a pas été ajouté.</p></div>"
+        document.getElementById('msg').innerHTML="<div className='uk-alert-danger' data-uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, l'utilisateur n'a pas été ajouté.</p></div>"
     })
     
   }
@@ -58,8 +58,6 @@ export class Sign extends Component  {
             }
         }
     }
-    
-    
     function changState(){
       var pass=document.getElementById('password')
       var pass1=document.getElementById('passwordConf')
@@ -94,7 +92,7 @@ export class Sign extends Component  {
               <input name="email" className="uk-input" type="email" onChange={this.changeHandler} value={email} required placeholder="E-mail address" id='email' />
             </div>
             <div className="uk-width-1-2@s">
-              <input name="phone" className="uk-input" type="text" onChange={this.changeHandler} value={phone} required placeholder="+212 666-666666" id='phone' />
+              <input name="phone" className="uk-input" type="text" onChange={this.changeHandler} value={phone} required placeholder="(0xx) xxx-xxxxx" id='phone' />
             </div>
             <div className="uk-width-1-2@s">
               <div data-uk-grid className="uk-grid-small uk-child-width-1-2">

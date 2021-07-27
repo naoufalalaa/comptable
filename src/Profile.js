@@ -25,7 +25,13 @@ function Profile() {
     
     function isLogged(){
         if(getCookie("sessionID") && getCookie("sessionT")){
-            return 1
+            if(getCookie("sessionID")!=='undefined' && getCookie("sessionT")!=='undefined')
+                return 1
+            else{
+                document.cookie = "sessionID= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+                document.cookie = "sessionT= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+                return 0
+            }
         }else{
             return 0
         }

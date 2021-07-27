@@ -20,16 +20,16 @@ export class BarLog extends Component {
             return false;
           }
         function isLogged(){
-            if(getCookie("session")){
+            if(getCookie("sessionID") && getCookie("sessionT")){
                 return 1
             }else{
                 return 0
             }
         }
         function logout(){
-            document.cookie = "sessionID= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
-            document.cookie = "sessionT= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
-            window.location.replace('/')
+            document.cookie = "sessionID= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+            document.cookie = "sessionT= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+            window.location.replace('/login')
         }
         
         function UserLogged(){

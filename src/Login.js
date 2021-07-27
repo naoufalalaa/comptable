@@ -1,14 +1,8 @@
 import React, { useEffect }  from 'react';
-import axios from 'axios'
 import Welcome from './components/Welcome'
-function Login() {
+import Logger from './Logger'
 
-    
-    useEffect( () => {
-        document.title = 'Comptable — Login'
-        document.getElementById('about').classList.remove('uk-active')
-        document.getElementById('home').classList.remove('uk-active')
-    })
+function Login() {
     function getCookie(cname) {
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
@@ -23,58 +17,36 @@ function Login() {
           }
         }
         return false;
-      }
-
-    function setCookie(cname, cvalue, exdays) {
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        var expires = "expires="+ d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
     
-   
+    useEffect( () => {
+        document.title = 'Comptable — Login'
+        document.getElementById('about').classList.remove('uk-active')
+        document.getElementById('home').classList.remove('uk-active')
+    })
     
     function isLogged(){
         if(getCookie("sessionID") && getCookie("sessionT")){
-            return 1
+            if(getCookie("sessionID")!=='undefined' && getCookie("sessionT")!=='undefined')
+                return 1
+            else{
+                document.cookie = "sessionID= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+                document.cookie = "sessionT= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+                return 0
+            }
         }else{
             return 0
         }
     }
-    function submitHandler(e) {
-        axios.post('https://comptableapi.herokuapp.com/clients/signin', document.getElementById('user').value.toLowerCase() , document.getElementById('password').value)
-        .then(response => {
-          console.log(response);
-        })
-        e.preventDefault()
-    }
     if(!isLogged()){
         return (
-            <div align="center">
-                <Welcome/>
-                <form onSubmit={ e => submitHandler} className="uk-padding">
-                <h3>Connectez-vous</h3>
-
-                    <div className="uk-margin">
-                        <div className="uk-inline uk-width-1-2">
-                            <span className="uk-form-icon" uk-icon="icon: user"></span>
-                            <input className="uk-input" id="user" type="text"/>
-                        </div>
-                    </div>
-
-                    <div className="uk-margin">
-                        <div className="uk-inline uk-width-1-2">
-                            <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-                            <input className="uk-input" id="password" type="password"/>
-                        </div>
-                    </div>
-                    <button type="submit" className="uk-button uk-button-success-outline uk-width-1-4">Connectez-vous</button>
-
-                </form>
-            </div>
+        <div>
+            <Welcome/>
+            <Logger/>
+        </div>
         )
     }
-    else window.location.replace("/"); 
+    else window.location.replace("/Profile"); 
 }
 
 export default Login;
