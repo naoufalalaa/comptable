@@ -20,7 +20,7 @@ export class BarLog extends Component {
             return false;
           }
         function isLogged(){
-            if(getCookie("session")){
+            if(getCookie("sessionID") && getCookie("sessionT")){
                 return 1
             }else{
                 return 0
@@ -35,8 +35,8 @@ export class BarLog extends Component {
 
             return (
                 <ul className="uk-navbar-nav" id="loginSM">
-                    <li><Link to="/Profile">{props.name}</Link></li>
-                    <li><Link onClick={logout}>Logout</Link></li>
+                    <li><Link to="/Profile">Profile</Link></li>
+                    <li><a onClick={logout}>Logout</a></li>
                 </ul>
             )
         }
@@ -50,7 +50,7 @@ export class BarLog extends Component {
         }
         
         if (isLogged()) {
-            return <UserLogged name="Naoufal"/>;
+            return <UserLogged />;
           }
           return <Guest />;
         

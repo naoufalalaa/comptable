@@ -1,6 +1,9 @@
 import React, { useEffect }  from 'react';
+import axios from 'axios'
 import Welcome from './components/Welcome'
 function Login() {
+
+    
     useEffect( () => {
         document.title = 'Comptable — Login'
         document.getElementById('about').classList.remove('uk-active')
@@ -29,27 +32,27 @@ function Login() {
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
     
-    function login(){
-        const user = document.getElementById('user').value
-        const pass = document.getElementById('password').value
-        if(user !== '' && pass !== ''){
-            const token = user+'-'+pass
-            setCookie("session",token,30)
-            window.location.replace('/')
-        }
-    }
+   
+    
     function isLogged(){
-        if(getCookie("session")){
+        if(getCookie("sessionID") && getCookie("sessionT")){
             return 1
         }else{
             return 0
         }
     }
+    function submitHandler(e) {
+        axios.post('https://comptableapi.herokuapp.com/clients/signin', document.getElementById('user').value.toLowerCase() , document.getElementById('password').value)
+        .then(response => {
+          console.log(response);
+        })
+        e.preventDefault()
+    }
     if(!isLogged()){
         return (
             <div align="center">
                 <Welcome/>
-                <form className="uk-padding">
+                <form onSubmit={ e => submitHandler} className="uk-padding">
                 <h3>Connectez-vous</h3>
 
                     <div className="uk-margin">
@@ -65,7 +68,7 @@ function Login() {
                             <input className="uk-input" id="password" type="password"/>
                         </div>
                     </div>
-                    <button onClick={login} className="uk-button uk-button-success-outline uk-width-1-4">Connectez-vous</button>
+                    <button type="submit" className="uk-button uk-button-success-outline uk-width-1-4">Connectez-vous</button>
 
                 </form>
             </div>

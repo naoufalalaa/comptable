@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import Welcome from './components/Welcome'
  
 const Home = ()=> {
-
+    
     useEffect( () => {
         document.title='Comptable du Coins'
     }

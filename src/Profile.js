@@ -21,20 +21,32 @@ function Profile() {
         document.title = 'Comptable — Profile'
         document.getElementById('about').classList.remove('uk-active')
         document.getElementById('home').classList.remove('uk-active')
-        document.getElementById('welcome').innerHTML=""
     })
     
     function isLogged(){
-        if(getCookie("session")){
+        if(getCookie("sessionID") && getCookie("sessionT")){
             return 1
         }else{
             return 0
         }
     }
+
+    
+    function Data(){
+        const _data = {
+            "entreprise": "Boukhchba", 
+            "statut": "ok"
+        }
+        return (<pre className="uk-width-1-2@s">
+                <em>entreprise :</em> {_data.entreprise}<br/> <em>statut :</em> {_data.statut}
+            </pre>)
+    }
+    
     if(isLogged()){
         return (
-            <div align="center">
-                <h3>Welcome {getCookie("session").split('-')[0]}</h3>
+            <div align="center" className="uk-padding">
+                <h3>Welcome <strong>{getCookie("sessionID")}</strong></h3>
+                <Data/>
             </div>
         )
     }

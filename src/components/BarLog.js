@@ -27,20 +27,21 @@ export class BarLog extends Component {
             }
         }
         function logout(){
-            document.cookie = "session= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+            document.cookie = "sessionID= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+            document.cookie = "sessionT= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
             window.location.replace('/')
         }
         
-        function UserLogged(props){
+        function UserLogged(){
 
             return (
                 <ul className="uk-navbar-nav" id="loginS">
                     <li>
-                        <a>{props.name}<span data-uk-icon="icon: chevron-down;"></span></a>
+                        <a>Profile<span data-uk-icon="icon: chevron-down;"></span></a>
                         <div className="uk-navbar-dropdown">
                             <ul className="uk-nav uk-navbar-dropdown-nav">
                                 <li><Link to="/Profile">Profile</Link></li>
-                                <li><Link onClick={logout} >Logout</Link></li>
+                                <li><a onClick={logout} >Logout</a></li>
                             </ul>
                         </div>
                     </li>
@@ -57,7 +58,7 @@ export class BarLog extends Component {
         }
         
         if (isLogged()) {
-            return <UserLogged name="Naoufal"/>;
+            return <UserLogged />;
           }
           return <Guest />;
         

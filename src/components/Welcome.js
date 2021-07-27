@@ -26,7 +26,7 @@ export class Welcome extends Component {
             )
         }
         
-        if (window.location.href.split('/')[3] === "login") {
+        if (window.location.href.split('/')[3] === "login" || window.location.href.split('/')[3] === "login?") {
             return <LLogin />;
         }if(window.location.href.split('/')[3] === ""){
           return <De1 />;
