@@ -40,7 +40,7 @@ function Profile() {
         return await axios.get('https://comptableapi.herokuapp.com/clients/'+id)
         .then(response => {
             const data = response.data
-            const dt = "<em>id :</em> <span id='id'>"+data.id+"</span><br/> <em>phone :</em> <span id='phone'>"+data.phone+"</span> <br/> <em>email :</em> <span id='email'>"+data.email+"</span> <br/> <em>role :</em> <span id='role'>"+data.role+"</span>"
+            const dt = "<em>phone :</em> <span id='phone'>"+data.phone+"</span> <br/> <em>email :</em> <span id='email'>"+data.email+"</span> <br/> <em>role :</em> <span id='role'>"+data.role+"</span>"
             document.getElementById('infos').innerHTML=dt
             document.getElementById('username').innerText = data.email.split('@')[0]
             return data
@@ -62,7 +62,7 @@ function Profile() {
                 <pre className="uk-width-1-2@s" id="infos">
                     <div data-uk-spinner></div>
                 </pre>
-                <div className="uk-grid uk-width-1-2@s uk-child-width-1-2" data-uk-grid>
+                <div className="uk-grid uk-width-1-2@m uk-child-width-1-2@m" data-uk-grid>
                     <div>
                         <button className="uk-button uk-button-secondary"><span data-uk-icon="settings"></span> User</button>
                     </div>

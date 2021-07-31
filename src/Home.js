@@ -63,8 +63,8 @@ const Home = ()=> {
                             </div>
                         </div>
                         <div>
-                            <div onClick={showF} className="uk-card uk-card-secondary uk-box-shadow-hover-xlarge uk-card-body dd f uk-grid-margin" >
-                            <span data-uk-icon="chevron-down"></span> <span className="titles">Fiches pratiques par thématique</span>  <span data-uk-icon="chevron-down"></span>
+                            <div className="uk-card uk-card-secondary uk-box-shadow-hover-xlarge uk-card-body dd f uk-grid-margin" >
+                                <div onClick={showF}><span data-uk-icon="chevron-down"></span> <span className="titles">Fiches pratiques par thématique</span>  <span data-uk-icon="chevron-down"></span></div>
                                 <div id="Fiche" className="uk-margin uk-text-left none">
                                     <ul className="uk-list uk-list-striped">
                                         <li className="uk-link-muted"><Link to="/"> Créer une entreprise <span className="uk-right" data-uk-icon="icon: chevron-double-right;"></span></Link></li>
@@ -75,8 +75,8 @@ const Home = ()=> {
                             </div>
                         </div>
                         <div>
-                            <div onClick={showPL} className="uk-card uk-card-default uk-box-shadow-hover-xlarge uk-card-body f uk-grid-margin">
-                                <span data-uk-icon="chevron-down"></span> <span className="titles">Fiches pratiques les plus lues</span> <span data-uk-icon="chevron-down"></span> 
+                            <div className="uk-card uk-card-default uk-box-shadow-hover-xlarge uk-card-body f uk-grid-margin">
+                                <div onClick={showPL}><span data-uk-icon="chevron-down"></span> <span className="titles">Fiches pratiques les plus lues</span> <span data-uk-icon="chevron-down"></span> </div>
                                 <div id="PL" className="uk-margin uk-text-left none">
                                     <ul className="uk-list uk-list-striped">
                                         <li className="uk-link-muted"><Link to="/"> List item 1 <span className="uk-right" data-uk-icon="icon: chevron-double-right;"></span></Link></li>
