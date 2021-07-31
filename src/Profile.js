@@ -1,5 +1,8 @@
 import React, { useEffect }  from 'react';
+import axios from 'axios'
+
 function Profile() {
+    
     function getCookie(cname) {
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
@@ -16,16 +19,12 @@ function Profile() {
         return false;
       }
 
+
     
-    useEffect( () => {
-        document.title = 'Comptable — Profile'
-        document.getElementById('about').classList.remove('uk-active')
-        document.getElementById('home').classList.remove('uk-active')
-    })
     
     function isLogged(){
         if(getCookie("sessionID") && getCookie("sessionT")){
-            if(getCookie("sessionID")!=='undefined' && getCookie("sessionT")!=='undefined')
+            if( getCookie("sessionID")!=='undefined' && getCookie("sessionT")!=='undefined' )
                 return 1
             else{
                 document.cookie = "sessionID= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
@@ -37,21 +36,49 @@ function Profile() {
         }
     }
 
-    
-    function Data(){
-        const _data = {
-            "entreprise": "Boukhchba", 
-            "statut": "ok"
-        }
-        return (<pre className="uk-width-1-2@s">
-                <em>entreprise :</em> {_data.entreprise}<br/> <em>statut :</em> {_data.statut}
-            </pre>)
+    async function getData() {
+        return await axios.get('https://comptableapi.herokuapp.com/clients/'+id)
+        .then(response => {
+            const data = response.data
+            const dt = "<em>id :</em> <span id='id'>"+data.id+"</span><br/> <em>phone :</em> <span id='phone'>"+data.phone+"</span> <br/> <em>email :</em> <span id='email'>"+data.email+"</span> <br/> <em>role :</em> <span id='role'>"+data.role+"</span>"
+            document.getElementById('infos').innerHTML=dt
+            document.getElementById('username').innerText = data.email.split('@')[0]
+            return data
+        })
+        .catch(err=>console.log(err))
+    }
+
+    const id = getCookie("sessionID")
+     function Data(){ 
+        
+        useEffect( () => {
+            document.title = 'Comptable — Profile'
+            document.getElementById('about').classList.remove('uk-active')
+            document.getElementById('home').classList.remove('uk-active')
+        })
+        getData()
+        return(
+            <div align="center">
+                <pre className="uk-width-1-2@s" id="infos">
+                    <div data-uk-spinner></div>
+                </pre>
+                <div className="uk-grid uk-width-1-2@s uk-child-width-1-2" data-uk-grid>
+                    <div>
+                        <button className="uk-button uk-button-secondary"><span data-uk-icon="settings"></span> User</button>
+                    </div>
+                    <div>
+                    <button className="uk-button uk-button-light"><span data-uk-icon="plus-circle"></span> Entreprise</button>
+                    </div>
+                </div>
+            </div>
+        )
     }
     
     if(isLogged()){
+
         return (
             <div align="center" className="uk-padding">
-                <h3>Welcome <strong>{getCookie("sessionID")}</strong></h3>
+                <h3>Welcome <strong id="username"></strong></h3>
                 <Data/>
             </div>
         )
