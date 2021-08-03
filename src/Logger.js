@@ -17,7 +17,7 @@ export class Login extends Component  {
   handleSubmit = e =>{
     e.preventDefault()
 
-      axios.post('https://comptableapi.herokuapp.com/clients/signin', this.state)
+      axios.post('https://comptableapi.herokuapp.com/users/signin', this.state)
       .then(response => {
         function setCookie(cname, cvalue, exdays) {
             var d = new Date();
@@ -30,11 +30,11 @@ export class Login extends Component  {
             setCookie("sessionID",response.data.id,30)
             window.location.replace('/Profile')
         }else{
-        document.getElementById('msg').innerHTML="<div class='uk-alert-danger' data-uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, l'utilisateur est introuvable.</p></div>"
+        document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, l'utilisateur est introuvable.</p></div>"
         }
         
       }).catch(err=>{console.log(err)
-        document.getElementById('msg').innerHTML="<div class='uk-alert-danger' data-uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, l'utilisateur est introuvable.</p></div>"
+        document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, l'utilisateur est introuvable.</p></div>"
     })
     
   }

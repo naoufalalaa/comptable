@@ -89,8 +89,107 @@ const Home = ()=> {
                     </div>
                 </div>
             </div>
-            
-
+            <div align="center">
+                <h1>Types d'entreprises</h1>
+            <table className="uk-text-center uk-margin uk-width-5-6 uk-table uk-table-striped">
+                <tbody>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><strong>Associé(s)</strong></td>
+                        <td><strong>Dirigeant(s)</strong></td>
+                        <td><strong>Capital social</strong></td>
+                        <td><strong>Régime social du ou des dirigeant(s)</strong></td>
+                        <td><strong>Imposition des bénéfices</strong></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><a href="#Entreprise individuelle (EI)"><strong>Entreprise individuelle (EI)</strong></a></p>
+                            <p><strong><a href="#Entreprise individuelle (EI)">Entreprise individuelle à responsabilité limitée (EIRL)</a></strong></p>
+                        </td>
+                        <td>L'entrepreneur individuel</td>
+                        <td>L'entrepreneur individuel</td>
+                        <td>Aucun</td>
+                        <td>Travailleur non-salarié</td>
+                        <td>Impôt sur le revenu (possibilité d'impôt sur les sociétés sous conditions en entreprise individuelle à responsabilité limitée)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#Entreprise unipersonnelle à responsabilité limitée (EURL)"><strong>Entreprise unipersonnelle à responsabilité limitée (EURL)</strong></a></td>
+                        <td>Une personne physique et morale</td>
+                        <td>Un ou plusieurs gérants (personnes physiques)</td>
+                        <td>Libre</td>
+                        <td>Travailleur non-salarié (associé unique) ou assimilé-salarié (plusieurs associés)</td>
+                        <td>Impôt sur le revenu (personne physique - possibilité d'impôt sur les sociétés), impôt sur les sociétés (personne morale)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#Société à responsabilité limitée (SARL)"><strong>Société à responsabilité limitée (SARL)</strong></a></td>
+                        <td>2 à 100 personnes physiques ou morales</td>
+                        <td>Un ou plusieurs gérants (personnes physiques)</td>
+                        <td>Libre</td>
+                        <td>Travailleur non-salarié (gérant majoritaire), assimilé salarié (gérant égalitaire ou majoritaire)</td>
+                        <td>Impôt sur les sociétés dans la plupart des cas</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#Société anonyme (SA)"><strong>Société anonyme (SA)</strong></a></td>
+                        <td>Au minimum 2 personnes physiques ou morales (ou 7 pour les sociétés cotées en bourse)</td>
+                        <td>Un conseil d'administration de 3 à 18 membres, avec un président désigné parmi eux</td>
+                        <td>
+                            <p>Au minimum&nbsp; 37 000 €</p>
+                        </td>
+                        <td>Assimilé-salarié (président du conseil d'administration)</td>
+                        <td>Impôt sur les sociétés dans la plupart des cas</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><a href="#Société par actions simplifiée (SAS)"><strong>Société par actions simplifiée (SAS)</strong></a></p>
+                            <p><a href="#Société par actions simplifiée (SAS)"><strong>Société par actions simplifiée unipersonnelle (SASU)</strong></a></p>
+                        </td>
+                        <td>Au minimum une personne physique ou morale</td>
+                        <td>Un président (personne physique ou morale), obligation d'un représentant légal</td>
+                        <td>Libre</td>
+                        <td>Assimilé salarié (président)</td>
+                        <td>Impôt sur les sociétés dans la plupart des cas</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#Société en nom collectif (SNC)"><strong>Société en nom collectif (SNC)</strong></a></td>
+                        <td>Au minimum 2 personnes physiques ou morales</td>
+                        <td>Un ou plusieurs gérants (personnes physiques ou morales)</td>
+                        <td>Libre</td>
+                        <td>Travailleur non-salarié</td>
+                        <td>Impôt sur le revenu (part des bénéfices des associés), option de l'impôt sur les sociétés possible pour la société</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#Scop"><strong>La société coopérative de production (SCOP)</strong></a></td>
+                        <td>Les salariés de l'entreprise (à hauteur de 51% minimum du capital) et éventuellement des investisseurs extérieurs</td>
+                        <td>Un dirigeant ou gérant élu par les associés majoritaires</td>
+                        <td>30 € minimum en SCOP SARL ou SAS et 18 500 € pour la SCOP SA</td>
+                        <td>Assimilé-salarié (directeur et dirigeants de l'entreprise)</td>
+                        <td>Impôt sur les sociétés</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><strong><a href="#Société en commandite par actions (SCA)">Société en commandite par actions (SCA)</a></strong></p>
+                        </td>
+                        <td>Au minimum 4 associés dont 1 commandité et 3 commanditaires</td>
+                        <td>Un ou plusieurs gérants (personnes physiques ou morales) nommé(s) par le(s) commandité(s)</td>
+                        <td>
+                            <p>Au minimum&nbsp; 37 000 €</p>
+                        </td>
+                        <td>Assimilé-salarié (gérant)</td>
+                        <td>Impôt sur les sociétés</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <p><strong><a href="#Société en commandite simple (SCS)">Société en commandite simple (SCS)</a></strong></p>
+                        </td>
+                        <td>Au minimum 2 associés dont 1 commandité et 1 commanditaire</td>
+                        <td>Un ou plusieurs gérants (personnes physiques ou morales) nommé(s) par le(s) commandité(s)</td>
+                        <td>Libre</td>
+                        <td>Assimilé-salarié (gérant)</td>
+                        <td>Impôt sur les sociétés</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
         </div>
     )
 

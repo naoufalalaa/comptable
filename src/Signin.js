@@ -5,8 +5,11 @@ export class Sign extends Component  {
     super(props)
 
     this.state = {
+        prenom: '',
+        nom: '',
         phone: '',
         email: '',
+        bDate: '',
         password: ''
     }
   }
@@ -18,7 +21,7 @@ export class Sign extends Component  {
   handleSubmit = e =>{
     e.preventDefault()
 
-      axios.post('https://comptableapi.herokuapp.com/clients/signup', this.state)
+      axios.post('https://comptableapi.herokuapp.com/users/signup', this.state)
       .then(response => {
         function setCookie(cname, cvalue, exdays) {
             var d = new Date();
@@ -28,16 +31,16 @@ export class Sign extends Component  {
         }
         setCookie("sessionT",response.data.token,30)
         setCookie("sessionID",response.data.id,30)
-        document.getElementById('msg').innerHTML="<div className='uk-alert-sucess' data-uk-alert><a class='uk-alert-close' data-uk-close></a><p>L'utilisateur a bien été ajouté.</p></div>"
+        document.getElementById('msg').innerHTML="<div class='uk-alert-sucess' uk-alert><a class='uk-alert-close' uk-close></a><p>L'utilisateur a bien été ajouté.</p></div>"
         window.location.replace('/Profile')
       }).catch(err=>{console.log(err)
-        document.getElementById('msg').innerHTML="<div className='uk-alert-danger' data-uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, l'utilisateur n'a pas été ajouté.</p></div>"
+        document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, l'utilisateur n'a pas été ajouté.</p></div>"
     })
     
   }
 
   render(){
-      const {phone , email , password} = this.state
+      const {prenom , nom , phone , email, bDate , password} = this.state
     function isTheSame(){
         var pass=document.getElementById('password')
         var pass1=document.getElementById('passwordConf')
@@ -88,11 +91,22 @@ export class Sign extends Component  {
 
       <form align="center" className="uk-padding  uk-grid-small" data-uk-grid onSubmit={this.handleSubmit}>
             
+            <div className="uk-width-1-2@s uk-child-width-1-2@s uk-grid-small" data-uk-grid> 
+                <div>
+                    <input name="prenom" className="uk-input" type="text" onChange={this.changeHandler} value={prenom} required placeholder="Prénom" id='prenom' />
+                </div>
+                <div>
+                    <input name="nom" className="uk-input" type="text" onChange={this.changeHandler} value={nom} required placeholder="Nom" id='nom' />
+                </div>
+            </div>
             <div className="uk-width-1-2@s">    
               <input name="email" className="uk-input" type="email" onChange={this.changeHandler} value={email} required placeholder="E-mail address" id='email' />
             </div>
             <div className="uk-width-1-2@s">
               <input name="phone" className="uk-input" type="text" onChange={this.changeHandler} value={phone} required placeholder="(0xx) xxx-xxxxx" id='phone' />
+            </div>
+            <div className="uk-width-1-2@s">
+              <input name="bDate" className="uk-input" type="date" onChange={this.changeHandler} value={bDate} required placeholder="Birthday" id='bDate' />
             </div>
             <div className="uk-width-1-2@s">
               <div data-uk-grid className="uk-grid-small uk-child-width-1-2">
@@ -102,7 +116,6 @@ export class Sign extends Component  {
                 <div>
                   <input className="uk-input" required placeholder="Confirm Password" onKeyUp={isTheSame} id="passwordConf" type="password"/> 
                 </div>
-                
                 <span id="error"></span>
               </div>
             </div>

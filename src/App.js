@@ -6,6 +6,7 @@ import About from './About'
 import Login from './Login'
 import Sign from './Sign'
 import Profile from './Profile'
+import Ent from './Entreprise'
 import Footer from './components/Footer'
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route  path="/login" component={Login} />
         <Route  path="/sign" component={Sign} />
         <Route  path="/Profile" component={Profile} />
+        <Route  path="/Entreprise" component={Ent} />
       </Switch>
       <Footer/>
     </Router>

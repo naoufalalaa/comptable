@@ -98,3 +98,9 @@ footer, .selection{
 .uk-form-warning,.uk-form-warning:focus{
   border:1px solid #ffb700;
 }
+pre{
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.uk-table-div {
+  overflow-x: scroll !important;
+}

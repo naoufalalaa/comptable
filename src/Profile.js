@@ -1,25 +1,55 @@
 import React, { useEffect,useState } from "react";
 import axios from "axios";
-
+import {Link} from 'react-router-dom'
 function Data({ person }) {
-  return (
+    const pe = person
+    function isEmpty(de){
+        if(de===null || de==='' || typeof(de) === "undefined") return(<i>Not defined</i>)
+        return (<strong>{de}</strong> )
+    }
+    if(pe.nomE===null || pe.nomE === '' || pe.nomE ==="undefined"){
+        document.getElementById('donnee')
+    }
+    return (
     <div align="center">
       <pre className="uk-width-1-2@s" id="infos">
-        <p><em>id : </em><i>{person.id}</i></p>
-        <p><em>email : </em><i>{person.email}</i></p>
-        <p><em>created At : </em><i>{person.createdAt}</i></p>
-        <p><em>Updated At : </em><i>{person.updatedAt}</i></p>
+        <p><em>email : </em><i>{pe.email}</i></p>
+        <p><em>Profile created At : </em><i>{pe.createdAt}</i></p>
       </pre>
-      <div className="uk-grid uk-width-1-2@m uk-child-width-1-2@s" data-uk-grid>
+      <div className="uk-table-div">
+      <table className="uk-table uk-table-striped">
+        <thead>
+            <tr>
+                <th>Nom Entreprise</th>
+                <th>Type Entreprise</th>
+                <th>Capital</th>
+                <th>Capital</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><small>{isEmpty(pe.nomE)}</small></td>
+                <td><small>{isEmpty(pe.typeE)}</small></td>
+                <td><small>{isEmpty(pe.capital)}</small></td>
+                <td><small>{isEmpty(pe.capital)}</small></td>
+            </tr>
+        </tbody>
+      </table>
+      </div>
+      <div id="donnee" className="uk-grid uk-width-1-2@m uk-child-width-1-2@s" data-uk-grid>
         <div>
-          <button className="uk-button uk-width-1-1 uk-button-secondary">
-            <span data-uk-icon="settings"></span> User
-          </button>
+            <Link to="/Entreprise">
+                <button className="uk-button uk-width-1-1 uk-button-secondary">
+                    <span data-uk-icon="settings"></span> User
+                </button>
+            </Link>
         </div>
-        <div>
-          <button className="uk-button uk-width-1-1 uk-button-light">
-            <span data-uk-icon="plus-circle"></span> Entreprise
-          </button>
+        <div id="Ent">
+            <Link to="/Entreprise">
+                <button className="uk-button uk-width-1-1 uk-button-light uk-dark">
+                    <span data-uk-icon="plus-circle"></span> Entreprise
+                </button>
+            </Link>
         </div>
       </div>
     </div>
@@ -70,7 +100,7 @@ function Profile() {
     document.getElementById("home").classList.remove("uk-active");
     (async () => {
       let dd = await axios.get(
-        "https://comptableapi.herokuapp.com/clients/" + id
+        "https://comptableapi.herokuapp.com/users/user/" + id
       );
       dd = dd.data;
       setProfile(dd);

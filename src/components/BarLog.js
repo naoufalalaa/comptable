@@ -33,7 +33,7 @@ export class BarLog extends Component {
         }
         
         function UserLogged(){
-
+            
             return (
                 <ul className="uk-navbar-nav" id="loginS">
                     <li>
