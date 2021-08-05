@@ -24,7 +24,7 @@ export class Profile extends Component{
       handleSubmit = e =>{
         e.preventDefault()
         
-        axios.post('https://comptableapi.herokuapp.com/users/ent',this.state)
+        axios.put('https://comptableapi.herokuapp.com/users/changepass',this.state)
         .then(response => {
             document.getElementById('msg').innerHTML="<div class='uk-alert-success' uk-alert><a class='uk-alert-close' uk-close></a><p>L'utilisateur "+response.data.email+" a été modifé.</p></div>"
         })
@@ -36,8 +36,8 @@ export class Profile extends Component{
 render() {
     const {email , oldpassword , newpassword } = this.state
     function isTheSame(){
-        var pass=document.getElementsByName('newpassword')
-        var pass1=document.getElementByName('passwordConf')
+        var pass=document.getElementById('newpassword')
+        var pass1=document.getElementById('passwordConf')
         if(pass.value.length >= 8){
             if(pass.value===pass1.value){
             pass.classList.remove('uk-form-warning')
@@ -56,8 +56,8 @@ render() {
         }
     }
     function changState(){
-      var pass=document.getElementsByName('newpassword')
-      var pass1=document.getElementByName('passwordConf')
+      var pass = document.getElementById('newpassword')
+      var pass1 = document.getElementById('passwordConf')
       
       if(pass.classList.contains("uk-form-success")){
         pass.classList.remove('uk-form-success')
@@ -118,8 +118,9 @@ render() {
         return (
             <div align="center" className="uk-padding">
             <h3>
-            Modify User
+            Modify Password
             </h3>
+            <div id='msg'></div>
             <div align="center">
                 <form align="center" className="uk-padding  uk-grid-small" data-uk-grid onSubmit={this.handleSubmit}>
                     
@@ -132,12 +133,12 @@ render() {
                     </div>
                     
                     <div className="uk-width-1-2@s"> 
-                        <input name="newpassword" className="uk-input" type="password" onKeyUp={changState} onChange={this.changeHandler} value={newpassword} required placeholder="Enter your new password" />
+                        <input name="newpassword" id="newpassword" className="uk-input" type="password" onChange={this.changeHandler} value={newpassword} onKeyUp={changState} required placeholder="Enter your new password" />
                     </div>
                     <div className="uk-width-1-2@s"> 
-                        <input name="passwordConf" className="uk-input" type="password" onChange={isTheSame} required placeholder="RE-Enter your new password" />
+                        <input id="passwordConf" className="uk-input" type="password" onChange={isTheSame} required placeholder="RE-Enter your new password" />
                     </div>
-                    
+                    <span id="error"></span>
                     <div className="uk-width-1-1@s">
                     <button type="submit" id='submit' className="uk-margin uk-button uk-button-secondary">Modify</button>
                     </div>

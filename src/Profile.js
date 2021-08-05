@@ -40,7 +40,7 @@ function Data({ person }) {
         <div>
             <Link to="/User">
                 <button className="uk-button uk-width-1-1 uk-button-secondary">
-                    <span data-uk-icon="settings"></span> User
+                    <span data-uk-icon="settings"></span> User password
                 </button>
             </Link>
         </div>

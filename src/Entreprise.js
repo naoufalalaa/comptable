@@ -82,7 +82,7 @@ render() {
                         <input name="nomE" className="uk-input" type="text" onChange={this.changeHandler} value={nomE} required placeholder="Nom Entreprise" id='nomE' />
                     </div>
                     <div className="uk-width-1-2@s"> 
-                        <select name="typeE" onChange={this.changeHandler} value={typeE} required class="uk-select">
+                        <select name="typeE" onChange={this.changeHandler} value={typeE} required className="uk-select">
                             <option value="Entreprise individuelle (EI)">Entreprise individuelle (EI)</option>
                             <option value="Entreprise individuelle à responsabilité limitée (EIRL)">Entreprise individuelle à responsabilité limitée (EIRL)</option>
                             <option value="Entreprise unipersonnelle à responsabilité limitée (EURL)">Entreprise unipersonnelle à responsabilité limitée (EURL)</option>
