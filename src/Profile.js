@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 function Data({ person }) {
     const pe = person
     function isEmpty(de){
-        if(de===null || de==='' || typeof(de) === "undefined") return(<i>Not defined</i>)
+        if(de===null || de==='' || typeof(de) === "undefined") return(<i><Link to="/Entreprise">Not yet defined</Link></i>)
         return (<strong>{de}</strong> )
     }
     if(pe.nomE===null || pe.nomE === '' || pe.nomE ==="undefined"){

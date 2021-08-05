@@ -8,6 +8,7 @@ import Sign from './Sign'
 import Profile from './Profile'
 import User from './User'
 import Ent from './Entreprise'
+import Upd from './allUpdate'
 import Footer from './components/Footer'
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Route  path="/login" component={Login} />
         <Route  path="/sign" component={Sign} />
         <Route  path="/Profile" component={Profile} />
-        <Route  path="/User" component={User} />
+        <Route  exact path="/User" component={User} />
+        <Route  path="/User/update" component={Upd} />
         <Route  path="/Entreprise" component={Ent} />
       </Switch>
       <Footer/>
