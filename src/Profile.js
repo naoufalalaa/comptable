@@ -38,7 +38,7 @@ function Data({ person }) {
       </div>
       <div id="donnee" className="uk-grid uk-width-1-2@m uk-child-width-1-2@s" data-uk-grid>
         <div>
-            <Link to="/Entreprise">
+            <Link to="/User">
                 <button className="uk-button uk-width-1-1 uk-button-secondary">
                     <span data-uk-icon="settings"></span> User
                 </button>

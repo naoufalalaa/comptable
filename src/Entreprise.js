@@ -68,7 +68,6 @@ render() {
         return 0;
         }
     }
-    const id = getCookie("sessionID");
     
     if (isLogged()) {
         return (
