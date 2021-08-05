@@ -4,17 +4,27 @@ import {Link} from 'react-router-dom'
 function Data({ person }) {
     const pe = person
     function isEmpty(de){
-        if(de===null || de==='' || typeof(de) === "undefined") return(<i><Link to="/Entreprise">Not yet defined</Link></i>)
+        if(de===null || de==='' || typeof(de) === "undefined") return(<i><Link className="uk-text-secondary" to="/Entreprise">Not yet defined  <span uk-icon="pencil"></span></Link></i>)
         return (<strong>{de}</strong> )
     }
     if(pe.nomE===null || pe.nomE === '' || pe.nomE ==="undefined"){
         document.getElementById('donnee')
     }
+    const prenom = pe.prenom;
+    
     return (
     <div align="center">
+        <h3>
+          Welcome <strong>{prenom+' '+pe.nom} </strong>
+        </h3>
       <pre className="uk-width-1-2@s" id="infos">
         <p><em>email : </em><i>{pe.email}</i></p>
         <p><em>Profile created At : </em><i>{pe.createdAt}</i></p>
+        <Link to = "/User/update">
+            <button className="uk-button uk-simple uk-width-1-1 uk-button-secondary">
+                <span data-uk-icon="cog"></span> User infos
+            </button>
+        </Link>
       </pre>
       <div className="uk-table-div">
       <table className="uk-table uk-table-striped">
@@ -110,9 +120,7 @@ function Profile() {
   if (isLogged()) {
     return (
       <div align="center" className="uk-padding">
-        <h3>
-          Welcome <strong id="username"></strong>
-        </h3>
+        
         <Data person={person} />
       </div>
     );

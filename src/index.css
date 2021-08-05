@@ -104,3 +104,6 @@ pre{
 .uk-table-div {
   overflow-x: scroll !important;
 }
+.uk-simple{
+  border-radius: 0;
+}
