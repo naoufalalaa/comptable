@@ -13,9 +13,8 @@ export class Profile extends Component{
             capital: '',
             sectActi: '',
             nbrAssocies: '',
-            listAssocies: [],
-            listGerant: [],
-            listWithNomAndPathCin:''
+            listAssocies: '',
+            listGerant: ''
         }
       }
     
@@ -36,7 +35,7 @@ export class Profile extends Component{
         
       }
 render() {
-    const {nomE , typeE , capital , sectActi, listAssocies , nbrAssocies , listGerant} = this.state
+    const {nomE , typeE , capital , sectActi, nbrAssocies , listAssocies , listGerant} = this.state
     var list = []
     function add(){
         var ee = document.getElementById('list').value
