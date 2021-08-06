@@ -28,7 +28,7 @@ export class Navbar extends Component {
                                 <ul className="uk-navbar-nav">
                                     <li id="home" className="uk-active"><Link onClick={home} to="/">Home</Link></li>
                                     <li>
-                                        <a>Parent<span data-uk-icon="icon: chevron-down;"></span></a>
+                                        <Link to="">Parent<span data-uk-icon="icon: chevron-down;"></span></Link>
                                         <div className="uk-navbar-dropdown">
                                             <ul className="uk-nav uk-navbar-dropdown-nav">
                                                 <li className="uk-active"><Link to="">Active</Link></li>
@@ -54,9 +54,9 @@ export class Navbar extends Component {
                 </div>
                 <nav className="uk-navbar uk-navbar-container uk-navbar-transparent uk-hidden@m">
                     <div className="uk-navbar-left" data-uk-toggle="target: #offcanvas-nav">
-                        <a className="uk-navbar-toggle">
+                        <Link to="" className="uk-navbar-toggle">
                             <span data-uk-navbar-toggle-icon></span> <span className="uk-margin-small-left">Menu</span>
-                        </a>
+                        </Link>
                     </div>
                     
                     <div className="uk-navbar-right">
@@ -74,11 +74,10 @@ export class Navbar extends Component {
                         <ul className="uk-nav uk-nav-default" id="navv">
                             <li><Link to="/">Home</Link></li>
                             <li className="uk-parent">
-                                <a>Créer</a>
+                                <Link>Créer</Link>
                                 <ul className="uk-nav-sub">
-                                    // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                                    <li><a>Sub item</a></li>
-                                    <li><a>Sub item</a></li>
+                                    <li><Link>Sub item</Link></li>
+                                    <li><Link>Sub item</Link></li>
                                 </ul>
                             </li>
                             <li><Link to="/about">About</Link></li>
