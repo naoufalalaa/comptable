@@ -76,6 +76,7 @@ export class Navbar extends Component {
                             <li className="uk-parent">
                                 <a>Créer</a>
                                 <ul className="uk-nav-sub">
+                                    // eslint-disable-next-line jsx-a11y/anchor-is-valid
                                     <li><a>Sub item</a></li>
                                     <li><a>Sub item</a></li>
                                 </ul>
