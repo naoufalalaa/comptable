@@ -74,10 +74,10 @@ export class Navbar extends Component {
                         <ul className="uk-nav uk-nav-default" id="navv">
                             <li><Link to="/">Home</Link></li>
                             <li className="uk-parent">
-                                <Link>Créer</Link>
+                                <Link to="">Créer</Link>
                                 <ul className="uk-nav-sub">
-                                    <li><Link>Sub item</Link></li>
-                                    <li><Link>Sub item</Link></li>
+                                    <li><Link to="">Sub item</Link></li>
+                                    <li><Link to="">Sub item</Link></li>
                                 </ul>
                             </li>
                             <li><Link to="/about">About</Link></li>

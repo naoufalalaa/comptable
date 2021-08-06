@@ -37,7 +37,7 @@ export class BarLog extends Component {
             return (
                 <ul>
                     <li className="uk-margin"><Link to="/Profile">Profile</Link></li>
-                    <li><a onClick={logout}>Logout</a></li>
+                    <li><Link to="" onClick={logout}>Logout</Link></li>
                 </ul>
             )
         }

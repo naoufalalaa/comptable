@@ -37,7 +37,7 @@ export class BarLog extends Component {
             return (
                 <ul className="uk-navbar-nav" id="loginSM">
                     <li><Link to="/Profile">Profile</Link></li>
-                    <li><a onClick={logout}>Logout</a></li>
+                    <li><Link to="" onClick={logout}>Logout</Link></li>
                 </ul>
             )
         }

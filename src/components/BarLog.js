@@ -37,11 +37,11 @@ export class BarLog extends Component {
             return (
                 <ul className="uk-navbar-nav" id="loginS">
                     <li>
-                        <a>Profile<span data-uk-icon="icon: chevron-down;"></span></a>
+                        <Link to="">Profile<span data-uk-icon="icon: chevron-down;"></span></Link>
                         <div className="uk-navbar-dropdown">
                             <ul className="uk-nav uk-navbar-dropdown-nav">
                                 <li><Link to="/Profile">Profile</Link></li>
-                                <li><a onClick={logout} >Logout</a></li>
+                                <li><Link to="" onClick={logout} >Logout</Link></li>
                             </ul>
                         </div>
                     </li>
