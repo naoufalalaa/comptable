@@ -15,35 +15,36 @@ function Data({ person }) {
     return (
     <div align="center">
         <h3>
-          Welcome <strong>{prenom+' '+pe.nom} </strong>
+          Welcome Administrator <strong>{prenom+' '+pe.nom} </strong>
         </h3>
-      <pre className="uk-width-1-2@s" id="infos">
-        <p><em>email : </em><i>{pe.email}</i></p>
-        <p><em>Profile created At : </em><i>{pe.createdAt}</i></p>
-        <Link to = "/User/update">
-            <button className="uk-button uk-simple uk-width-1-1 uk-button-secondary">
-                <span data-uk-icon="cog"></span> User infos
-            </button>
-        </Link>
-      </pre>
       <div className="uk-table-div">
       <table className="uk-table uk-table-striped">
         <thead>
             <tr>
-                <th>Nom Entreprise</th>
-                <th>Type Entreprise</th>
-                <th>Capital</th>
-                <th>nbr Associés</th>
+                <th>user</th>
+                <th>Certificat négatif</th>
+                <th>Domiciliation</th>
+                <th>Statut et Cachet</th>
+                <th>Enregistrement des statuts</th>
+                <th>Demande de patente</th>
+                <th>Demande de RC</th>
+                <th>Demande IF</th>
+                <th>Les Annonces</th>
+                <th>Affiliation CNSS</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td><small>{isEmpty(pe.nomE)}</small></td>
-                <td><small>{isEmpty(pe.typeE)}</small></td>
-                <td><small>{isEmpty(pe.capital)}</small></td>
-                <td><small>{isEmpty(pe.sectActi)}</small></td>
-                <td><small>{isEmpty(pe.listAssocies)}</small></td>
-                <td><small>{isEmpty(pe.listGerant)}</small></td>
+                <td><small>{isEmpty(pe.nomE)}</small></td>
+                <td><small>{isEmpty(pe.nomE)}</small></td>
+                <td><small>{isEmpty(pe.nomE)}</small></td>
+                <td><small>{isEmpty(pe.nomE)}</small></td>
+                <td><small>{isEmpty(pe.nomE)}</small></td>
+                <td><small>{isEmpty(pe.nomE)}</small></td>
+                <td><small>{isEmpty(pe.nomE)}</small></td>
+                <td><small>{isEmpty(pe.nomE)}</small></td>
+                <td><small>{isEmpty(pe.nomE)}</small></td>
             </tr>
         </tbody>
       </table>

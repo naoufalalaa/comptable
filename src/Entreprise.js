@@ -10,7 +10,9 @@ export class Profile extends Component{
             capital: '',
             sectActi: '',
             nbrAssocies: '',
-            listGerant: ''
+            listAssocies: [],
+            listGerant: [],
+            listWithNomAndPathCin:''
         }
       }
     
@@ -21,7 +23,7 @@ export class Profile extends Component{
       handleSubmit = e =>{
         e.preventDefault()
         
-        axios.post('https://comptableapi.herokuapp.com/users/ent',this.state)
+        axios.post('https://comptableapi.herokuapp.com/users/ent/create',this.state)
         .then(response => {
             document.getElementById('msg').innerHTML="<div class='uk-alert-success' uk-alert><a class='uk-alert-close' uk-close></a><p>L'entreprise "+response.data.nomE+" a été modifée.</p></div>"
         })
@@ -31,8 +33,29 @@ export class Profile extends Component{
         
       }
 render() {
-    const {nomE , typeE , capital , sectActi, nbrAssocies , listGerant} = this.state
-
+    const {nomE , typeE , capital , sectActi, listAssocies , listGerant} = this.state
+    var list = []
+    function add(){
+        var ee = document.getElementById('list').value
+        list.push(ee)
+        ee = ''
+        document.getElementById('liste').value=list
+    }
+    function min(){
+        list.pop()
+        document.getElementById('liste').value=list
+    }
+    var listA = []
+    function addA(){
+        var ee = document.getElementById('listA').value
+        listA.push(ee)
+        ee = ''
+        document.getElementById('listAssoc').value=listA
+    }
+    function minA(){
+        listA.pop()
+        document.getElementById('listAssoc').value=listA
+    }
     function getCookie(cname) {
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
@@ -75,6 +98,7 @@ render() {
             <h3>
             Modify
             </h3>
+            <div id="msg"></div>
             <div align="center">
                 <form align="center" className="uk-padding  uk-grid-small" data-uk-grid onSubmit={this.handleSubmit}>
                     
@@ -102,12 +126,43 @@ render() {
                     <input name="sectActi" className="uk-input" type="text" onChange={this.changeHandler} value={sectActi} required placeholder="Secteur d'activité" />
                     </div>
                     <div className="uk-width-1-2@s">
-                    <input name="nbrAssocies" className="uk-input" type="number" onChange={this.changeHandler} value={nbrAssocies} required placeholder="Nombre d'Associés" />
+                        Associés
+                        <div className="uk-grid-small" data-uk-grid>
+                            <div className="uk-width-2-3">
+                                <input type="text" id="listA" name="listA" placeholder="Votre Associé" className="uk-input" />
+                            </div>
+                            <div className="uk-width-1-3">
+                                <button type="button" className="uk-button uk-button-secondary" onClick={addA}>+</button>
+                            </div>
+                        </div>
+                        <div className="uk-grid-small" data-uk-grid>
+                            <div className="uk-width-2-3">
+                                <input disabled name='listAssoc' value={listAssocies} onChange={this.changeHandler} className="uk-input" type="text" id="listAssoc" />
+                            </div>
+                            <div className="uk-width-1-3">
+                                <button type="button" className="uk-button uk-button-secondary" onClick={minA}>-</button>
+                            </div>
+                        </div>
                     </div>
                     <div className="uk-width-1-2@s">
-                    <input name="listGerant" className="uk-input" type="text" onChange={this.changeHandler} value={listGerant} required placeholder="Les gérants séparés par ;" />
+                        Gérants
+                        <div className="uk-grid-small" data-uk-grid>
+                            <div className="uk-width-2-3">
+                                <input type="text" id="list" name="list" placeholder="Votre gérant" className="uk-input" />
+                            </div>
+                            <div className="uk-width-1-3">
+                                <button type="button" className="uk-button uk-button-secondary" onClick={add}>+</button>
+                            </div>
+                        </div>
+                        <div className="uk-grid-small" data-uk-grid>
+                            <div className="uk-width-2-3">
+                                <input disabled name='listGerant' value={listGerant} onChange={this.changeHandler} className="uk-input" type="text" id="liste" />
+                            </div>
+                            <div className="uk-width-1-3">
+                                <button type="button" className="uk-button uk-button-secondary" onClick={min}>-</button>
+                            </div>
+                        </div>
                     </div>
-                
                     <div className="uk-width-1-1@s">
                     <button type="submit" id='submit' className="uk-margin uk-button uk-button-secondary">Modify</button>
                     </div>

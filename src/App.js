@@ -6,6 +6,8 @@ import About from './About'
 import Login from './Login'
 import Sign from './Sign'
 import Profile from './Profile'
+import ProfileA from './ProfileAdmin'
+import Admin from './Admin'
 import User from './User'
 import Ent from './Entreprise'
 import Upd from './allUpdate'
@@ -18,6 +20,8 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route  path="/about" component={About} />
         <Route  path="/login" component={Login} />
+        <Route exact path="/admin" component={Admin} />
+        <Route  path="/admin/profile" component={ProfileA} />
         <Route  path="/sign" component={Sign} />
         <Route  path="/Profile" component={Profile} />
         <Route  exact path="/User" component={User} />
