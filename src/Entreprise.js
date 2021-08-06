@@ -37,9 +37,11 @@ render() {
     var list = []
     function add(){
         var ee = document.getElementById('list').value
-        list.push(ee)
-        ee = ''
-        document.getElementById('liste').value=list
+        if(ee){
+            list.push(ee)
+            ee = ''
+            document.getElementById('liste').value=list
+        }
     }
     function min(){
         list.pop()
@@ -48,10 +50,12 @@ render() {
     var listA = []
     function addA(){
         var ee = document.getElementById('listA').value
-        listA.push(ee)
-        ee = ''
-        document.getElementById('listAssoc').value=listA
-        document.getElementById('nbrAssocies').value=listA.length
+        if(ee){
+            listA.push(ee)
+            ee = ''
+            document.getElementById('listAssoc').value=listA
+            document.getElementById('nbrAssocies').value=listA.length
+        }
     }
     function minA(){
         listA.pop()
@@ -94,6 +98,9 @@ render() {
         }
     }
     
+
+
+    
     if (isLogged()) {
         return (
         <div align="center" className="uk-padding">
@@ -102,7 +109,7 @@ render() {
             </h3>
             <div id="msg"></div>
             <div align="center">
-                <form align="center" className="uk-padding  uk-grid-small" data-uk-grid onSubmit={this.handleSubmit}>
+                <form align="center" encType="multipart/form-data" className="uk-padding  uk-grid-small" data-uk-grid onSubmit={this.handleSubmit}>
                     
                     <div className="uk-width-1-2@s"> 
                         <input name="nomE" className="uk-input" type="text" onChange={this.changeHandler} value={nomE} required placeholder="Nom Entreprise" id='nomE' />
@@ -146,6 +153,13 @@ render() {
                                 <button type="button" className="uk-button uk-button-secondary" onClick={minA}>-</button>
                             </div>
                         </div>
+                        <div className="uk-grid-small uk-width-1-1" data-uk-grid>
+                                <div data-uk-form-custom="target: true">
+                                    <input type="file" multiple name="CinImg[]"/>
+                                    <input className="uk-input uk-form-width-large" type="text" placeholder="Select files and CINs" disabled/>
+                                </div>
+                        </div>
+
                     </div>
                     <div className="uk-width-1-2@s">
                         Gérants
@@ -167,7 +181,7 @@ render() {
                         </div>
                     </div>
                     <div className="uk-width-1-1@s">
-                    <button type="submit" id='submit' className="uk-margin uk-button uk-button-secondary">Modify</button>
+                        <button type="submit" id='submit' className="uk-margin uk-button uk-button-secondary">Modify</button>
                     </div>
                 </form>
             </div>
