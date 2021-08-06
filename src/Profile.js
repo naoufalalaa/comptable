@@ -35,6 +35,7 @@ function Data({ person }) {
                 <th>Nom Entreprise</th>
                 <th>Type Entreprise</th>
                 <th>Capital</th>
+                <th>secteur d'activité</th>
                 <th>nbr Associés</th>
                 <th>Liste Associés</th>
                 <th>Liste Gérants</th>
@@ -46,6 +47,7 @@ function Data({ person }) {
                 <td><small>{isEmpty(pe.typeE)}</small></td>
                 <td><small>{isEmpty(pe.capital)}</small></td>
                 <td><small>{isEmpty(pe.sectActi)}</small></td>
+                <td><small>{isEmpty(pe.listAssocies)}</small></td>
                 <td><small>{isEmpty(pe.listAssocies)}</small></td>
                 <td><small>{isEmpty(pe.listGerant)}</small></td>
             </tr>
