@@ -47,7 +47,7 @@ function Data({ person }) {
                 <td><small>{isEmpty(pe.typeE)}</small></td>
                 <td><small>{isEmpty(pe.capital)}</small></td>
                 <td><small>{isEmpty(pe.sectActi)}</small></td>
-                <td><small>{isEmpty(pe.listAssocies)}</small></td>
+                <td><small>{isEmpty(pe.nbrAssocies)}</small></td>
                 <td><small>{isEmpty(pe.listAssocies)}</small></td>
                 <td><small>{isEmpty(pe.listGerant)}</small></td>
             </tr>
@@ -123,6 +123,7 @@ function Profile() {
       dd = dd.data;
       setProfile(dd);
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLogged()) {
