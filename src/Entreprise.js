@@ -33,7 +33,7 @@ export class Profile extends Component{
         
       }
 render() {
-    const {nomE , typeE , capital , sectActi, listAssocies , listGerant} = this.state
+    const {nomE , typeE , capital , sectActi, listAssocies , nbrAssocies , listGerant} = this.state
     var list = []
     function add(){
         var ee = document.getElementById('list').value
@@ -51,10 +51,12 @@ render() {
         listA.push(ee)
         ee = ''
         document.getElementById('listAssoc').value=listA
+        document.getElementById('nbrAssocies').value=listA.length
     }
     function minA(){
         listA.pop()
         document.getElementById('listAssoc').value=listA
+        document.getElementById('nbrAssocies').value=listA.length
     }
     function getCookie(cname) {
         var name = cname + "=";
@@ -138,6 +140,7 @@ render() {
                         <div className="uk-grid-small" data-uk-grid>
                             <div className="uk-width-2-3">
                                 <input disabled name='listAssoc' value={listAssocies} onChange={this.changeHandler} className="uk-input" type="text" id="listAssoc" />
+                                <input disabled name='nbrAssocies' id="nbrAssocies" value={nbrAssocies} onChange={this.changeHandler} hidden type="number" />
                             </div>
                             <div className="uk-width-1-3">
                                 <button type="button" className="uk-button uk-button-secondary" onClick={minA}>-</button>
