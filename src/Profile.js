@@ -12,9 +12,8 @@ function Data({ person }) {
     
     const prenom = pe.prenom;
     const nom = pe.nom;
-    let date= pe.createdAt
-
     
+
     return (
     <div align="center">
         <h3>
@@ -22,7 +21,7 @@ function Data({ person }) {
         </h3>
       <pre className="uk-width-1-2@s" id="infos">
         <p><em>Entreprise : </em><i>{isEmpty(pe.nomE)}</i></p>
-        <p><em>Profile created At : </em><i>{date.split('T')[0]}</i></p>
+        <p><em>Profile created At : </em><i>{pe.createdAt}</i></p>
         <Link to = "/User/update">
             <button className="uk-button uk-simple uk-width-1-1 uk-button-secondary">
                 <span data-uk-icon="cog"></span> User infos
