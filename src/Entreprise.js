@@ -3,8 +3,11 @@ import axios from "axios";
 export class Profile extends Component{
     constructor(props) {
         super(props)
-
+        this.id = document.cookie.split(';')[1].split('=')[1]
+        this.token = document.cookie.split(';')[0].split('=')[1]
         this.state = {
+            id: this.id,
+            token: this.token,
             nomE: '',
             typeE: '',
             capital: '',
@@ -56,6 +59,7 @@ render() {
             document.getElementById('listAssoc').value=listA
             document.getElementById('nbrAssocies').value=listA.length
         }
+        document.getElementById('listA').value=''
     }
     function minA(){
         listA.pop()
