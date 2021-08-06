@@ -7,20 +7,20 @@ function Data({ person }) {
         if(de === null || de ==='' || typeof(de) === "undefined") return(<i><Link className="uk-text-secondary" to="/Entreprise">Not yet defined  <span uk-icon="pencil"></span></Link></i>)
         return (<strong>{de}</strong> )
     }
+    
     if(pe.nomE === null || pe.nomE === '' || pe.nomE === "undefined"){
         document.getElementById('donnee')
     }
+    
     const prenom = pe.prenom;
     const nom = pe.nom;
-    const ent = pe.nomE;
-    
     return (
     <div align="center">
         <h3>
           Welcome <strong>{prenom+' '+nom} </strong>
         </h3>
       <pre className="uk-width-1-2@s" id="infos">
-        <p><em>email : </em><i>{pe.email}</i></p>
+        <p><em>Entreprise : </em><i>{isEmpty(pe.nomE)}</i></p>
         <p><em>Profile created At : </em><i>{pe.createdAt}</i></p>
         <Link to = "/User/update">
             <button className="uk-button uk-simple uk-width-1-1 uk-button-secondary">
@@ -42,7 +42,7 @@ function Data({ person }) {
         </thead>
         <tbody>
             <tr>
-                <td><small>{ent}</small></td>
+                <td><small>{isEmpty(pe.nomE)}</small></td>
                 <td><small>{isEmpty(pe.typeE)}</small></td>
                 <td><small>{isEmpty(pe.capital)}</small></td>
                 <td><small>{isEmpty(pe.sectActi)}</small></td>
@@ -116,7 +116,7 @@ function Profile() {
     document.getElementById("home").classList.remove("uk-active");
     (async () => {
       let dd = await axios.get(
-        "https://comptableapi.herokuapp.com/users/user/" + id
+        "https://comptableapi.herokuapp.com/users/ent/" + id
       );
       dd = dd.data;
       setProfile(dd);
