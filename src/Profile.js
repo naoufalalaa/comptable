@@ -11,11 +11,13 @@ function Data({ person }) {
         document.getElementById('donnee')
     }
     const prenom = pe.prenom;
+    const nom = pe.nom;
+    const ent = pe.nomE;
     
     return (
     <div align="center">
         <h3>
-          Welcome <strong>{prenom+' '+pe.nom} </strong>
+          Welcome <strong>{prenom+' '+nom} </strong>
         </h3>
       <pre className="uk-width-1-2@s" id="infos">
         <p><em>email : </em><i>{pe.email}</i></p>
@@ -34,11 +36,13 @@ function Data({ person }) {
                 <th>Type Entreprise</th>
                 <th>Capital</th>
                 <th>nbr Associés</th>
+                <th>Liste Associés</th>
+                <th>Liste Gérants</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><small>{pe.nomE}</small></td>
+                <td><small>{ent}</small></td>
                 <td><small>{isEmpty(pe.typeE)}</small></td>
                 <td><small>{isEmpty(pe.capital)}</small></td>
                 <td><small>{isEmpty(pe.sectActi)}</small></td>
