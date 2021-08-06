@@ -156,13 +156,6 @@ render() {
                                 <button type="button" className="uk-button uk-button-secondary" onClick={minA}>-</button>
                             </div>
                         </div>
-                        <div className="uk-grid-small uk-width-1-1" data-uk-grid>
-                                <div data-uk-form-custom="target: true">
-                                    <input type="file" multiple name="CinImg[]"/>
-                                    <input className="uk-input uk-form-width-large" type="text" placeholder="Select files and CINs" disabled/>
-                                </div>
-                        </div>
-
                     </div>
                     <div className="uk-width-1-2@s">
                         Gérants
