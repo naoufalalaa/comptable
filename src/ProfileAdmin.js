@@ -118,6 +118,7 @@ function Profile() {
       dd = dd.data;
       setProfile(dd);
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLogged()) {
