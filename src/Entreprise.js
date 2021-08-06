@@ -108,7 +108,7 @@ render() {
         return (
         <div align="center" className="uk-padding">
             <h3>
-            Modify
+            Entreprise review
             </h3>
             <div id="msg"></div>
             <div align="center">
