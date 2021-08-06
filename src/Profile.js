@@ -8,12 +8,13 @@ function Data({ person }) {
         return (<strong>{de}</strong> )
     }
     
-    if(pe.nomE === null || pe.nomE === '' || pe.nomE === "undefined"){
-        document.getElementById('donnee')
-    }
+    
     
     const prenom = pe.prenom;
     const nom = pe.nom;
+    let date= pe.createdAt
+
+    
     return (
     <div align="center">
         <h3>
@@ -21,7 +22,7 @@ function Data({ person }) {
         </h3>
       <pre className="uk-width-1-2@s" id="infos">
         <p><em>Entreprise : </em><i>{isEmpty(pe.nomE)}</i></p>
-        <p><em>Profile created At : </em><i>{pe.createdAt}</i></p>
+        <p><em>Profile created At : </em><i>{date.split('T')[0]}</i></p>
         <Link to = "/User/update">
             <button className="uk-button uk-simple uk-width-1-1 uk-button-secondary">
                 <span data-uk-icon="cog"></span> User infos
@@ -63,12 +64,12 @@ function Data({ person }) {
             </Link>
         </div>
         <div id="Ent">
-            <Link to="/Entreprise">
-                <button className="uk-button uk-width-1-1 uk-button-light uk-dark">
-                    <span data-uk-icon="plus-circle"></span> Entreprise
-                </button>
-            </Link>
-        </div>
+              <Link to="/Entreprise">
+                    <button className="uk-button uk-width-1-1 uk-button-light uk-dark">
+                        <span data-uk-icon="plus-circle"></span> Entreprise
+                    </button>
+                </Link>
+          </div>
       </div>
     </div>
   );
