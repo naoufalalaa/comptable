@@ -4,10 +4,10 @@ import {Link} from 'react-router-dom'
 function Data({ person }) {
     const pe = person
     function isEmpty(de){
-        if(de===null || de==='' || typeof(de) === "undefined") return(<i><Link className="uk-text-secondary" to="/Entreprise">Not yet defined  <span uk-icon="pencil"></span></Link></i>)
+        if(de === null || de ==='' || typeof(de) === "undefined") return(<i><Link className="uk-text-secondary" to="/Entreprise">Not yet defined  <span uk-icon="pencil"></span></Link></i>)
         return (<strong>{de}</strong> )
     }
-    if(pe.nomE===null || pe.nomE === '' || pe.nomE ==="undefined"){
+    if(pe.nomE === null || pe.nomE === '' || pe.nomE === "undefined"){
         document.getElementById('donnee')
     }
     const prenom = pe.prenom;
@@ -38,7 +38,7 @@ function Data({ person }) {
         </thead>
         <tbody>
             <tr>
-                <td><small>{isEmpty(pe.nomE)}</small></td>
+                <td><small>{pe.nomE}</small></td>
                 <td><small>{isEmpty(pe.typeE)}</small></td>
                 <td><small>{isEmpty(pe.capital)}</small></td>
                 <td><small>{isEmpty(pe.sectActi)}</small></td>
@@ -117,7 +117,6 @@ function Profile() {
       dd = dd.data;
       setProfile(dd);
     })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLogged()) {
