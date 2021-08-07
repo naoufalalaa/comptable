@@ -10,11 +10,11 @@ export class Profile extends Component{
             token: this.token,
             nomE: '',
             typeE: '',
-            capital: '',
-            sectActi: '',
             nbrAssocies: '',
             listAssocies: '',
-            listGerant: ''
+            listGerant: '',
+            sectActi: '',
+            capital: ''
         }
       }
     
@@ -59,7 +59,7 @@ export class Profile extends Component{
         
       }
 render() {
-    const {nomE , typeE , capital , sectActi, nbrAssocies , listAssocies , listGerant} = this.state
+    const {nomE , typeE , nbrAssocies , listAssocies, listGerant , sectActi, capital} = this.state
     var list = []
     function add(){
         var ee = document.getElementById('list').value
