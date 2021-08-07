@@ -18,15 +18,15 @@ function App() {
       <Navbar/>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route  path="/about" component={About} />
-        <Route  path="/login" component={Login} />
+        <Route path="/about" component={About} />
+        <Route path="/login" component={Login} />
         <Route exact path="/admin" component={Admin} />
-        <Route  path="/admin/profile" component={ProfileA} />
-        <Route  path="/sign" component={Sign} />
-        <Route  path="/Profile" component={Profile} />
-        <Route  exact path="/User" component={User} />
-        <Route  path="/User/update" component={Upd} />
-        <Route  path="/Entreprise" component={Ent} />
+        <Route path="/admin/profile" component={ProfileA} />
+        <Route path="/sign" component={Sign} />
+        <Route path="/Profile" component={Profile} />
+        <Route exact path="/User" component={User} />
+        <Route path="/User/update" component={Upd} />
+        <Route path="/Entreprise" component={Ent} />
       </Switch>
       <Footer/>
     </Router>
