@@ -8,7 +8,12 @@ function Data({ person }) {
         return (<strong>{de}</strong> )
     }
     
+    function isValide(validationComptable){
+      if(validationComptable === "en cours") return(<i className="fas fa-2x fa-clock wait"></i>)
+      if(validationComptable === "valide") return(<i className="fas fa-2x fa-check-circle done"></i>)
+      if(validationComptable === null || validationComptable ==='' || typeof(validationComptable) === "undefined") return(<i><Link className="uk-text-secondary" to="/Entreprise">Not yet defined  <span uk-icon="pencil"></span></Link></i>)
 
+    }
     
     const prenom = pe.prenom;
     const nom = pe.nom;
@@ -38,6 +43,7 @@ function Data({ person }) {
                 <th>nbr Associés</th>
                 <th>Liste Associés</th>
                 <th>Liste Gérants</th>
+                <th>Validité</th>
             </tr>
         </thead>
         <tbody>
@@ -49,6 +55,7 @@ function Data({ person }) {
                 <td><small>{isEmpty(pe.nbrAssocies)}</small></td>
                 <td><small>{isEmpty(pe.listAssocies)}</small></td>
                 <td><small>{isEmpty(pe.listGerant)}</small></td>
+                <td align="center"><small>{isValide(pe.validationComptable)}</small></td>
             </tr>
         </tbody>
       </table>

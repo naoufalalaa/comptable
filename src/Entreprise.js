@@ -3,8 +3,8 @@ import axios from "axios";
 export class Profile extends Component{
     constructor(props) {
         super(props)
-        this.id = document.cookie.split(';')[1].split('=')[1]
-        this.token = document.cookie.split(';')[0].split('=')[1]
+        this.id = document.cookie.slice(document.cookie.indexOf('sessionID=')+10).split(';')[0]
+        this.token = document.cookie.slice(document.cookie.indexOf('sessionT=')+9).split(';')[0]
         this.state = {
             id: this.id,
             token: this.token,
@@ -48,6 +48,7 @@ export class Profile extends Component{
         document.getElementById('msg').innerHTML=`<div class='uk-alert-success' uk-alert><div uk-spinner></div> LOADING</div>`
         axios.post('https://comptableapi.herokuapp.com/users/ent/create',this.state)
         .then(response => {
+            console.log(response)
             document.getElementById('msg').innerHTML="<div class='uk-alert-success' uk-alert><a class='uk-alert-close' uk-close></a><p>L'entreprise "+response.data.nomE+" a été modifée.</p></div>"
         })
         .catch(err=>{console.log(err)
@@ -70,6 +71,8 @@ render() {
         }
         document.getElementById('list').value=''
     }
+  
+
     function min(){
         list.pop()
         document.getElementById('liste').value=list
@@ -97,13 +100,13 @@ render() {
         var decodedCookie = decodeURIComponent(document.cookie);
         var ca = decodedCookie.split(";");
         for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) === " ") {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) === 0) {
-            return c.substring(name.length, c.length);
-        }
+            var c = ca[i];
+            while (c.charAt(0) === " ") {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
         }
         return false;
     }
@@ -209,7 +212,6 @@ render() {
                             </div>
                         </div>
                     </div>
-                    <input name="CinImg[]" type="file" className="uk-input" multiple />
                     <div className="uk-width-1-1@s">
                         <button type="submit" id='submit' className="uk-margin uk-button uk-button-secondary">Modify</button>
                     </div>

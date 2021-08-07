@@ -4,8 +4,8 @@ export class Profile extends Component{
     constructor(props) {
         super(props)
         
-        this.id = document.cookie.split(';')[1].split('=')[1]
-        this.token = document.cookie.split(';')[0].split('=')[1]
+        this.id = document.cookie.slice(document.cookie.indexOf('sessionID=')+10).split(';')[0]
+        this.token = document.cookie.slice(document.cookie.indexOf('sessionT=')+9).split(';')[0]
         this.state = {
             id : this.id,
             token : this.token,

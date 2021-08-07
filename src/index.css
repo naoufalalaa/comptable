@@ -107,3 +107,9 @@ pre{
 .uk-simple{
   border-radius: 0;
 }
+.wait {
+  color: #ffb700;
+}
+.done{
+  color: #00b01a;
+}
