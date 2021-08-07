@@ -209,6 +209,7 @@ render() {
                             </div>
                         </div>
                     </div>
+                    <input name="CinImg[]" type="file" className="uk-input" multiple />
                     <div className="uk-width-1-1@s">
                         <button type="submit" id='submit' className="uk-margin uk-button uk-button-secondary">Modify</button>
                     </div>
