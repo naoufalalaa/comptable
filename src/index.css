@@ -103,6 +103,11 @@ pre{
 }
 .uk-table-div {
   overflow-x: scroll !important;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.uk-table-div::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
 }
 .uk-simple{
   border-radius: 0;
