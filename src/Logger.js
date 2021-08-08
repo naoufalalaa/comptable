@@ -63,7 +63,7 @@ export class Login extends Component  {
                             <input name="password" placeholder="Password" value={password} onChange={this.changeHandler} className="uk-input" id="password" type="password"/>
                         </div>
                     </div>
-                    <button type="submit" className="uk-button uk-button-success-outline uk-width-1-4">Connectez-vous</button>
+                    <button type="submit" id="submit" className="uk-button uk-button-success-outline uk-width-1-4">Connectez-vous</button>
 
                 </form>
             </div>
