@@ -42,7 +42,7 @@ export class Profile extends Component{
         
       }
 render() {
-    const {nom,prenom,email,phone, bDate, } = this.state
+    const {nom,prenom,email,phone, bDate} = this.state
     
     function getCookie(cname) {
         var name = cname + "=";
