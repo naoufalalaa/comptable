@@ -16,6 +16,8 @@ export class Login extends Component  {
 
   handleSubmit = e =>{
     e.preventDefault()
+    document.getElementById('msg').innerHTML="<div class='uk-alert' uk-alert><a class='uk-alert-close' data-uk-close></a><p><div uk-spinner></div> Chargement ...</p></div>"
+    document.getElementById('submit').setAttribute('disabled',true)
 
       axios.post('https://comptableapi.herokuapp.com/users/signin', this.state)
       .then(response => {
@@ -31,9 +33,11 @@ export class Login extends Component  {
             window.location.replace('/Profile')
         }else{
         document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, l'utilisateur est introuvable.</p></div>"
+        document.getElementById('submit').removeAttribute('disabled')
         }
         
       }).catch(err=>{console.log(err)
+        document.getElementById('submit').removeAttribute('disabled')
         document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, la combinaison ne semble pas correcte.</p></div>"
     })
     

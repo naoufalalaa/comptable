@@ -20,7 +20,8 @@ export class Sign extends Component  {
 
   handleSubmit = e =>{
     e.preventDefault()
-
+    document.getElementById('msg').innerHTML="<div class='uk-alert' uk-alert><a class='uk-alert-close' uk-close></a><p><div uk-spinner></div> Traitement...</p></div>"
+    document.getElementById('submit').setAttribute('disabled',true)
       axios.post('https://comptableapi.herokuapp.com/users/signup', this.state)
       .then(response => {
         function setCookie(cname, cvalue, exdays) {
@@ -34,6 +35,7 @@ export class Sign extends Component  {
         document.getElementById('msg').innerHTML="<div class='uk-alert-sucess' uk-alert><a class='uk-alert-close' uk-close></a><p>L'utilisateur a bien été ajouté.</p></div>"
         window.location.replace('/Profile')
       }).catch(err=>{console.log(err)
+        document.getElementById('submit').removeAttribute('disabled')
         document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, l'utilisateur n'a pas été ajouté.</p></div>"
     })
     

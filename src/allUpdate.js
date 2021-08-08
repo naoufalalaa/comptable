@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Delete from "./delete";
 export class Profile extends Component{
     constructor(props) {
         super(props)
@@ -26,13 +27,17 @@ export class Profile extends Component{
     
       handleSubmit = e =>{
         e.preventDefault()
+        document.getElementById('msg').innerHTML="<div class='uk-alert' uk-alert><a class='uk-alert-close' uk-close></a><p><div uk-spinner></div> Traitement ...</p></div>"
+        document.getElementById('submit').setAttribute('disabled',true)
         
         axios.put('https://comptableapi.herokuapp.com/users/update',this.state)
         .then(response => {
             document.getElementById('msg').innerHTML="<div class='uk-alert-success' uk-alert><a class='uk-alert-close' uk-close></a><p>L'utilisateur "+response.data.email+" a été modifé.</p></div>"
+            document.getElementById('submit').removeAttribute('disabled')
         })
         .catch(err=>{console.log(err)
             document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, l'utilisateur n'a pas été modifié.</p></div>"
+            document.getElementById('submit').removeAttribute('disabled')
         })
         
       }
@@ -54,7 +59,6 @@ render() {
         }
         return false;
     }
-    
 
     function isLogged() {
         if (getCookie("sessionID") && getCookie("sessionT")) {
@@ -106,10 +110,16 @@ render() {
                     </div>
                     
                     
-                
-                    <div className="uk-width-1-1@s">
-                    <button type="submit" id='submit' className="uk-margin uk-button uk-button-secondary">Modify user</button>
+                    <div className="uk-grid uk-width-1-1" data-uk-grid>
+                        <div className="uk-width-1-2@s">
+                            <button type="submit" id='submit' className="uk-button uk-button-secondary">Modify user</button>
+                        </div>
+                        <div className="uk-width-1-2@s">
+                            <button type="button" className="uk-button uk-button-danger" data-uk-toggle="target: #delete">Delete user</button>
+                        </div>
                     </div>
+
+                    <Delete/>
                 </form>
             </div>
         </div>
