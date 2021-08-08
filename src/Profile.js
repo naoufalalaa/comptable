@@ -14,7 +14,18 @@ function Data({ person }) {
       if(validationComptable === null || validationComptable ==='' || typeof(validationComptable) === "undefined") return(<i><Link className="uk-text-secondary" to="/Entreprise">Not yet defined  <span uk-icon="pencil"></span></Link></i>)
 
     }
-    
+    function AddEnt(){
+      if(person.nom === null || person.nom ==='' || typeof(person.nom) === "undefined") return(
+        <div id="Ent">
+              <Link to="/Entreprise">
+                    <button className="uk-button uk-width-1-1 uk-button-light uk-dark">
+                        <span data-uk-icon="plus-circle"></span> Entreprise
+                    </button>
+                </Link>
+          </div>
+      )
+      else return null
+    }
     const prenom = pe.prenom;
     const nom = pe.nom;
     return (
@@ -60,7 +71,7 @@ function Data({ person }) {
         </tbody>
       </table>
       </div>
-      <div id="donnee" className="uk-grid uk-width-1-2@m uk-child-width-1-2@s" data-uk-grid>
+      <div id="donnee" className="uk-grid uk-width-1-2@m uk-child-width-expand@s" data-uk-grid>
         <div>
             <Link to="/User">
                 <button className="uk-button uk-width-1-1 uk-button-secondary">
@@ -68,13 +79,7 @@ function Data({ person }) {
                 </button>
             </Link>
         </div>
-        <div id="Ent">
-              <Link to="/Entreprise">
-                    <button className="uk-button uk-width-1-1 uk-button-light uk-dark">
-                        <span data-uk-icon="plus-circle"></span> Entreprise
-                    </button>
-                </Link>
-          </div>
+        <AddEnt/>
       </div>
     </div>
   );
