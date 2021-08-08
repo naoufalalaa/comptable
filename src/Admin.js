@@ -16,8 +16,9 @@ export class Login extends Component  {
 
   handleSubmit = e =>{
     e.preventDefault()
-
-      axios.post('https://comptableapi.herokuapp.com/users/signin/admin', this.state)
+    document.getElementById('submit').setAttribute('disabled',true)
+    document.getElementById('msg').innerHTML=`<div class='uk-alert-success' uk-alert><div uk-spinner></div> LOADING</div>`
+    axios.post('https://comptableapi.herokuapp.com/users/signin/admin', this.state)
       .then(response => {
         function setCookie(cname, cvalue, exdays) {
             var d = new Date();
@@ -30,17 +31,16 @@ export class Login extends Component  {
             setCookie("sessionID",response.data.id,30)
             window.location.replace('/admin/profile')
         }else{
-        document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, l'utilisateur est introuvable.</p></div>"
+          document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, la combinaison ne semble pas correcte.</p></div>" 
         }
-        
       }).catch(err=>{console.log(err)
-        document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, la combinaison ne semble pas correcte.</p></div>"
-    })
+        document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, l'utilisateur est introuvable.</p></div>"
+      })
     
   }
 
   render(){
-      const { email , password} = this.state
+      const {email , password} = this.state
 
     return (
         <div align="center">
@@ -60,8 +60,7 @@ export class Login extends Component  {
                             <input name="password" placeholder="Password" value={password} onChange={this.changeHandler} className="uk-input" id="password" type="password"/>
                         </div>
                     </div>
-                    <button type="submit" className="uk-button uk-button-success-outline uk-width-1-4">Connectez-vous</button>
-
+                    <button type="submit" id="submit" className="uk-button uk-button-success-outline uk-width-1-4">Connectez-vous</button>
                 </form>
             </div>
         );
