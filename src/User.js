@@ -23,18 +23,21 @@ export class Profile extends Component{
     
       handleSubmit = e =>{
         e.preventDefault()
-        
-        axios.put('https://comptableapi.herokuapp.com/users/changepass',this.state)
-        .then(response => {
-            document.getElementById('msg').innerHTML="<div class='uk-alert-success' uk-alert><a class='uk-alert-close' uk-close></a><p>L'utilisateur "+response.data.email+" a été modifé.</p></div>"
-        })
-        .catch(err=>{console.log(err)
-            document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, l'utilisateur n'a pas été modifié.</p></div>"
-        })
-        
+        try{
+            axios.put('https://comptableapi.herokuapp.com/users/changepass',this.state)
+            .then(response => {
+                document.getElementById('msg').innerHTML="<div class='uk-alert-success' uk-alert><a class='uk-alert-close' uk-close></a><p>L'utilisateur "+response.data.email+" a été modifé.</p></div>"
+            })
+            .catch(err=>{console.log(err)
+                document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, l'utilisateur n'a pas été modifié.</p></div>"
+            })
+        } catch (err){
+            document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur du serveur.</p></div>"
+            console.log(err)
+        }
       }
 render() {
-    const {email , oldpassword , newpassword } = this.state
+    const {email , oldpassword , newpassword} = this.state
     function isTheSame(){
         var pass=document.getElementById('newpassword')
         var pass1=document.getElementById('passwordConf')

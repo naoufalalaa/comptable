@@ -29,17 +29,20 @@ export class Profile extends Component{
         e.preventDefault()
         document.getElementById('msg').innerHTML="<div class='uk-alert' uk-alert><a class='uk-alert-close' uk-close></a><p><div uk-spinner></div> Traitement ...</p></div>"
         document.getElementById('submit').setAttribute('disabled',true)
-        
-        axios.put('https://comptableapi.herokuapp.com/users/update',this.state)
-        .then(response => {
-            document.getElementById('msg').innerHTML="<div class='uk-alert-success' uk-alert><a class='uk-alert-close' uk-close></a><p>L'utilisateur "+response.data.email+" a été modifé.</p></div>"
-            document.getElementById('submit').removeAttribute('disabled')
-        })
-        .catch(err=>{console.log(err)
-            document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, l'utilisateur n'a pas été modifié.</p></div>"
-            document.getElementById('submit').removeAttribute('disabled')
-        })
-        
+        try{
+            axios.put('https://comptableapi.herokuapp.com/users/update',this.state)
+            .then(response => {
+                document.getElementById('msg').innerHTML="<div class='uk-alert-success' uk-alert><a class='uk-alert-close' uk-close></a><p>L'utilisateur "+response.data.email+" a été modifé.</p></div>"
+                document.getElementById('submit').removeAttribute('disabled')
+            })
+            .catch(err=>{console.log(err)
+                document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, l'utilisateur n'a pas été modifié.</p></div>"
+                document.getElementById('submit').removeAttribute('disabled')
+            })
+        } catch(err){
+            document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur du serveur.</p></div>"
+            console.log(err)
+        }
       }
 render() {
     const {nom,prenom,email,phone, bDate} = this.state

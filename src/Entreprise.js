@@ -46,22 +46,27 @@ export class Profile extends Component{
         this.changeHandlerG();
         document.getElementById('submit').setAttribute('disabled',true)
         document.getElementById('msg').innerHTML=`<div class='uk-alert-success' uk-alert><div uk-spinner></div> LOADING</div>`
-        axios.post('https://comptableapi.herokuapp.com/users/ent/create',this.state)
-        .then(response => {
-            if(response.data === 'authentification error' ){
-                document.cookie =
-                "sessionID= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                document.cookie =
-                "sessionT= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                window.location.replace('/login')
-            }
-            document.getElementById('msg').innerHTML="<div class='uk-alert-success' uk-alert><a class='uk-alert-close' uk-close></a><p>L'entreprise "+response.data.nomE+" a été modifée.</p></div>"
-        })
-        .catch(err=>{console.log(err)
-            document.getElementById('submit').removeAttribute('disabled')
-            document.getElementById('list').removeAttribute('disabled')
-            document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, l'entreprise n'a pas été modifiée.</p></div>"
-        })
+        try{
+            axios.post('https://comptableapi.herokuapp.com/users/ent/create',this.state)
+            .then(response => {
+                if(response.data === 'authentification error' ){
+                    document.cookie =
+                    "sessionID= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    document.cookie =
+                    "sessionT= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    window.location.replace('/login')
+                }
+                document.getElementById('msg').innerHTML="<div class='uk-alert-success' uk-alert><a class='uk-alert-close' uk-close></a><p>L'entreprise "+response.data.nomE+" a été modifée.</p></div>"
+            })
+            .catch(err=>{console.log(err)
+                document.getElementById('submit').removeAttribute('disabled')
+                document.getElementById('list').removeAttribute('disabled')
+                document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, l'entreprise n'a pas été modifiée.</p></div>"
+            })
+        }catch(err){
+            document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur du serveur.</p></div>"
+            console.log(err)
+        }
       }
 render() {
     const {nomE , typeE , nbrAssocies , listAssocies, listGerant , sectActi, capital} = this.state

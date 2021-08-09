@@ -18,7 +18,7 @@ export class Login extends Component  {
     e.preventDefault()
     document.getElementById('msg').innerHTML="<div class='uk-alert' uk-alert><a class='uk-alert-close' data-uk-close></a><p><div uk-spinner></div> Chargement ...</p></div>"
     document.getElementById('submit').setAttribute('disabled',true)
-
+    try{
       axios.post('https://comptableapi.herokuapp.com/users/signin', this.state)
       .then(response => {
         function setCookie(cname, cvalue, exdays) {
@@ -40,6 +40,9 @@ export class Login extends Component  {
         document.getElementById('submit').removeAttribute('disabled')
         document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, la combinaison ne semble pas correcte.</p></div>"
     })
+  }catch(err){
+    document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur du serveur.</p></div>"
+  }
     
   }
 

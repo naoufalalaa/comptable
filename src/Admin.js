@@ -18,25 +18,29 @@ export class Login extends Component  {
     e.preventDefault()
     document.getElementById('submit').setAttribute('disabled',true)
     document.getElementById('msg').innerHTML=`<div class='uk-alert-success' uk-alert><div uk-spinner></div> LOADING</div>`
-    axios.post('https://comptableapi.herokuapp.com/users/signin/admin', this.state)
-      .then(response => {
-        function setCookie(cname, cvalue, exdays) {
-            var d = new Date();
-            d.setTime(d.getTime() + (exdays*24*60*60*1000));
-            var expires = "expires="+ d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-        }
-        if(response.data !== "" && response.data !== 'undefined'){
-            setCookie("sessionT",response.data.token,30)
-            setCookie("sessionID",response.data.id,30)
-            window.location.replace('/admin/profile')
-        }else{
-          document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, la combinaison ne semble pas correcte.</p></div>" 
-        }
-      }).catch(err=>{console.log(err)
-        document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, l'utilisateur est introuvable.</p></div>"
-      })
-    
+    try{
+      axios.post('https://comptableapi.herokuapp.com/users/signin/admin', this.state)
+        .then(response => {
+          function setCookie(cname, cvalue, exdays) {
+              var d = new Date();
+              d.setTime(d.getTime() + (exdays*24*60*60*1000));
+              var expires = "expires="+ d.toUTCString();
+              document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+          }
+          if(response.data !== "" && response.data !== 'undefined'){
+              setCookie("sessionT",response.data.token,30)
+              setCookie("sessionID",response.data.id,30)
+              window.location.replace('/admin/profile')
+          }else{
+            document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, la combinaison ne semble pas correcte.</p></div>" 
+          }
+        }).catch(err=>{console.log(err)
+          document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur, l'utilisateur est introuvable.</p></div>"
+        })
+    } catch(err) {
+      document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur du serveur.</p></div>"
+      console.log(err)
+    }
   }
 
   render(){

@@ -21,22 +21,25 @@ export class Profile extends Component{
     
       handleSubmit = e =>{
         e.preventDefault()
-        
-        axios.put('https://comptableapi.herokuapp.com/users/delete',this.state)
-        .then(response => {
-            if(response.data==="authentification error") {
-                document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, l'utilisateur n'a pas été supprimé.</p></div>"
-            }else{
-                document.cookie =
-                "sessionID= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                document.cookie =
-                "sessionT= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            }
-        })
-        .catch(err=>{console.log(err)
-            document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, du serveur.</p></div>"
-        })
-        
+        try{
+            axios.delete('https://comptableapi.herokuapp.com/users/delete',this.state)
+            .then(response => {
+                if(response.data==="authentification error") {
+                    document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, l'utilisateur n'a pas été supprimé.</p></div>"
+                }else{
+                    document.cookie =
+                    "sessionID= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    document.cookie =
+                    "sessionT= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                }
+            })
+            .catch(err=>{console.log(err)
+                document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, du serveur.</p></div>"
+            })
+        } catch(err){
+            document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur du serveur.</p></div>"
+            console.log(err)
+        }
       }
 render() {
     const {email} = this.state

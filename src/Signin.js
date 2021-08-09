@@ -22,6 +22,7 @@ export class Sign extends Component  {
     e.preventDefault()
     document.getElementById('msg').innerHTML="<div class='uk-alert' uk-alert><a class='uk-alert-close' uk-close></a><p><div uk-spinner></div> Traitement...</p></div>"
     document.getElementById('submit').setAttribute('disabled',true)
+    try{
       axios.post('https://comptableapi.herokuapp.com/users/signup', this.state)
       .then(response => {
         function setCookie(cname, cvalue, exdays) {
@@ -37,7 +38,9 @@ export class Sign extends Component  {
       }).catch(err=>{console.log(err)
         document.getElementById('submit').removeAttribute('disabled')
         document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' uk-close></a><p>Erreur, l'utilisateur n'a pas été ajouté.</p></div>"
-    })
+    })} catch (err){
+    document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur du serveur.</p></div>"
+    }
     
   }
 

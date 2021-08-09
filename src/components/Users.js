@@ -8,8 +8,7 @@ class User extends Component {
   };
 
   componentDidMount() {
-    axios
-      .get("https://comptableapi.herokuapp.com/users/ent")
+    axios.get("https://comptableapi.herokuapp.com/users/ent")
       .then(response => {
         this.successShow(response);
       })
@@ -25,6 +24,7 @@ class User extends Component {
   }
 
   render() {
+     
     function isEmpty(de){
         if(de===null || de==='' || typeof(de) === "undefined") return(<i>Not yet defined </i>)
         return (<strong>{de}</strong> )
