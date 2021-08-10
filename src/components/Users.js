@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import {Link} from "react-router-dom"
 
 class User extends Component {
   state = {
@@ -24,7 +24,6 @@ class User extends Component {
   }
 
   render() {
-     
     function isEmpty(de){
         if(de===null || de==='' || typeof(de) === "undefined") return(<i>Not yet defined </i>)
         return (<strong>{de}</strong> )
@@ -39,6 +38,9 @@ class User extends Component {
                 </td>
                 <td>
                     {isEmpty(nomE)}
+                </td>
+                <td>
+                    <Link to={`/admin/User/${id}`}>see profile</Link>
                 </td>
             </tr>
             ))}

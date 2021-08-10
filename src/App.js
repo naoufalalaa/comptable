@@ -9,6 +9,7 @@ import Profile from './Profile'
 import ProfileA from './ProfileAdmin'
 import Admin from './Admin'
 import User from './User'
+import UserId from './components/User'
 import Ent from './Entreprise'
 import Upd from './allUpdate'
 import Footer from './components/Footer'
@@ -22,11 +23,13 @@ function App() {
         <Route path="/login" component={Login} />
         <Route exact path="/admin" component={Admin} />
         <Route path="/admin/profile" component={ProfileA} />
+        <Route path="/admin/user/:id" component={UserId} />
         <Route path="/sign" component={Sign} />
         <Route path="/Profile" component={Profile} />
         <Route exact path="/User" component={User} />
         <Route path="/User/update" component={Upd} />
         <Route path="/Entreprise" component={Ent} />
+        <Route path='*' exact={true} component={Home} />
       </Switch>
       <Footer/>
     </Router>

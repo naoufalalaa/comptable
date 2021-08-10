@@ -41,10 +41,10 @@ function Data({ person }) {
                 <th>Affiliation CNSS</th>
             </tr>
         </thead>
-                <Users />
+        <Users/>
       </table>
       </div>
-      <div id="donnee" className="uk-grid uk-width-1-2@m uk-child-width-1-2@s" data-uk-grid>
+      <div className="uk-grid" data-uk-grid>
         <div>
             <Link to="/User">
                 <button className="uk-button uk-width-1-1 uk-button-secondary">
@@ -102,7 +102,7 @@ function Profile() {
     document.getElementById("home").classList.remove("uk-active");
     (async () => {
       let dd = await axios.get(
-        "https://comptableapi.herokuapp.com/users/user/" + id
+        "https://comptableapi.herokuapp.com/users/ent/" + id
       );
       dd = dd.data;
       setProfile(dd);
