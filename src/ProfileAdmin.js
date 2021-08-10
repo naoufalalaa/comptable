@@ -30,7 +30,7 @@ function Data({ person }) {
             <tr>
                 <th>User</th>
                 <th>Entreprise</th>
-                <th>Certificat négatif</th>
+                {/* <th>Certificat négatif</th>
                 <th>Domiciliation</th>
                 <th>Statut et Cachet</th>
                 <th>Enregistrement des statuts</th>
@@ -38,7 +38,8 @@ function Data({ person }) {
                 <th>Demande de RC</th>
                 <th>Demande IF</th>
                 <th>Les Annonces</th>
-                <th>Affiliation CNSS</th>
+                <th>Affiliation CNSS</th> */}
+                <th>User Infos</th>
             </tr>
         </thead>
         <Users/>
