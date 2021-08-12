@@ -14,7 +14,7 @@ export class Login extends Component  {
     this.setState({[e.target.name] : e.target.value})
   }
 
-  handleSubmit = e =>{
+  handleSubmit = e => {
     e.preventDefault()
     document.getElementById('submit').setAttribute('disabled',true)
     document.getElementById('msg').innerHTML=`<div class='uk-alert' uk-alert><div uk-spinner></div> LOADING</div>`
@@ -53,7 +53,7 @@ export class Login extends Component  {
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
         var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
+        for(var i = 0; i < ca.length; i++) {
           var c = ca[i];
           while (c.charAt(0) === ' ') {
             c = c.substring(1);

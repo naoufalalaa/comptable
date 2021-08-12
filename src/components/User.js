@@ -3,10 +3,50 @@ import axios from "axios";
 import Info from './InfoUser'
 import unavailable from '../assets/img/unavailable-user.png'
 import user from '../assets/img/user.png'
-function Data({ person }) {
+function Data({ person ,loading }) {
+  if(loading){
+    return (
+      <div align="center">
+        <h3>
+          <strong>User Profile</strong>
+        </h3>
+        <div id="msg"></div>
+        <div className="uk-grid uk-text-center" data-uk-grid>
+            <div className="uk-width-1-3@s">
+                <div className="uk-card uk-card-default uk-card-body">
+                  <div className="uk-text-center">
+                    <img src={user} alt='right' width="100px"/>
+                    <h4><strong>load</strong></h4>
+                  </div>
+                  <div className="uk-text-left">
+                    Loading...
+                    <div>
+                      <div className="uk-grid-small" data-uk-grid>
+                        <div className="uk-width-expand" data-uk-leader="fill: ">Entreprise :</div>
+                        <div>load</div>
+                      </div>
+                      <div className="uk-grid-small" data-uk-grid>
+                          <div className="uk-width-expand" data-uk-leader="fill: ">Validité :</div>
+                          <div>load</div>
+                      </div>
+                    </div>
+                    <div>
+                        <button className="uk-button uk-button-light" disabled>Validate</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+           
+            <div className="uk-width-2-3@s">
+                <div className="uk-card uk-card-default uk-card-body">Item</div>
+            </div>
+        </div>
+    </div>
+    )
+  }
     const pe = person
     
-  const userId = window.location.pathname.split('/')[3];
+    const userId = window.location.pathname.split('/')[3];
     
     const prenom = pe.prenom;
     if(typeof(person.nom)==="undefined" ) {
@@ -41,6 +81,7 @@ function Data({ person }) {
         body.token= getCookie("sessionT")
         body.idAV = userId
         console.log(body)
+        try{
         axios.post('https://comptableapi.herokuapp.com/users/valide',body)
         .then((response)=>{
           console.log(response)
@@ -50,7 +91,9 @@ function Data({ person }) {
           console.log(err)
           document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur.</p></div>"
           document.getElementById('i').classList.add('uk-button-success')
-        })
+        })}catch(err){
+          console.log(err)
+        }
       }
       if(pe.validationComptable ==='en cours'){
         return (<button onClick={validat} id='i' className="uk-button uk-button-success">Validate</button>)
@@ -113,7 +156,7 @@ function getCookie(cname) {
 }
 function Profile() {
   const [person, setProfile] = useState({});
-
+  const [loading , setLoading] = useState(false)
   
 
   function isLogged() {
@@ -140,18 +183,19 @@ function Profile() {
     document.getElementById("about").classList.remove("uk-active");
     document.getElementById("home").classList.remove("uk-active");
     (async () => {
-      let dd = await axios.get(
+      setLoading(true)
+      const data = await axios.get(
         "https://comptableapi.herokuapp.com/users/ent/" + id
-      );
-      dd = dd.data;
-      setProfile(dd);
+      ); 
+      setProfile(data.data);
+      setLoading(false)
     })();
   }, [id]);
 
   if (isLogged() && id) {
     return (
       <div align="center" className="uk-padding">
-        <Data person={person} />
+        <Data person={person} loading = {loading}/>
       </div>
     );
   } else window.location.replace("/");
