@@ -6,6 +6,7 @@ import user from '../assets/img/user.png'
 function Data({ person }) {
     const pe = person
     
+  const userId = window.location.pathname.split('/')[3];
     
     const prenom = pe.prenom;
     if(typeof(person.nom)==="undefined" ) {
@@ -29,11 +30,39 @@ function Data({ person }) {
         return (<span style={{color : "red"}}>{e}</span>)
       }else return (<span>Not yet</span>)
     }
+    function Validate(){
+      function validat(){
+        document.getElementById('msg').innerHTML="<div class='uk-alert' uk-alert><a class='uk-alert-close' data-uk-close></a><p><div data-uk-spinner></div> Chargement ...</p></div>"
+        document.getElementById('i').setAttribute('disabled',true)
+        document.getElementById('i').classList.remove('uk-button-success')
+
+        let body = {}
+        body.id= getCookie("sessionID")
+        body.token= getCookie("sessionT")
+        body.idAV = userId
+        console.log(body)
+        axios.post('https://comptableapi.herokuapp.com/users/valide',body)
+        .then((response)=>{
+          console.log(response)
+          document.getElementById('msg').innerHTML="<div class='uk-alert-success' uk-alert><a class='uk-alert-close' data-uk-close></a><p>L'entreprise a été validé.</p></div>"
+        })
+        .catch((err)=>{ 
+          console.log(err)
+          document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>Erreur.</p></div>"
+          document.getElementById('i').classList.add('uk-button-success')
+        })
+      }
+      if(pe.validationComptable ==='en cours'){
+        return (<button onClick={validat} id='i' className="uk-button uk-button-success">Validate</button>)
+      }
+      else return (<button className="uk-button" disabled>Validate</button>)
+    }
     return (
     <div align="center">
         <h3>
           <strong>User Profile</strong>
         </h3>
+        <div id="msg"></div>
         <div className="uk-grid uk-text-center" data-uk-grid>
             <div className="uk-width-1-3@s">
                 <div className="uk-card uk-card-default uk-card-body">
@@ -52,6 +81,9 @@ function Data({ person }) {
                           <div className="uk-width-expand" data-uk-leader="fill: ">Validité :</div>
                           <div>{isValid(pe.validationComptable)}</div>
                       </div>
+                    </div>
+                    <div>
+                      <Validate/>
                     </div>
                   </div>
                 </div>

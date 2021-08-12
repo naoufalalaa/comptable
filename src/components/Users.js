@@ -40,7 +40,7 @@ class User extends Component {
                     {isEmpty(nomE)}
                 </td>
                 <td>
-                    <Link to={`/admin/User/${id}`}>see profile</Link>
+                    <Link to={`/admin/User/${id}`}>go to profile</Link>
                 </td>
             </tr>
             ))}

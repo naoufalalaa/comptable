@@ -98,7 +98,7 @@ function Profile() {
   }
   const id = getCookie("sessionID");
   useEffect(() => {
-    document.title = "Comptable — Profile";
+    document.title = "Comptable — Admin";
     document.getElementById("about").classList.remove("uk-active");
     document.getElementById("home").classList.remove("uk-active");
     (async () => {
