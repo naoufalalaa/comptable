@@ -133,7 +133,95 @@ function Data({ person ,loading }) {
             </div>
            
             <div className="uk-width-2-3@s">
-                <div className="uk-card uk-card-default uk-card-body">Item</div>
+                <div className="uk-card uk-card-default uk-card-body">
+                  <div className="uk-flex-center uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center" data-uk-grid>
+                      
+                      <div>
+                        <div className="uk-card uk-card-default">
+                            <div className="uk-card-media-top">
+                                <img src="images/light.jpg" alt="tesr"/>
+                            </div>
+                            <div className="uk-card-body">
+                                <h3 className="uk-card-title">Media Top</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="uk-card uk-card-default">
+                            <div className="uk-card-media-top">
+                                <img src="images/light.jpg" alt="tesr"/>
+                            </div>
+                            <div className="uk-card-body">
+                                <h3 className="uk-card-title">Media Top</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                            </div>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <div className="uk-card uk-card-default">
+                            <div className="uk-card-media-top">
+                                <img src="images/light.jpg" alt="tesr"/>
+                            </div>
+                            <div className="uk-card-body">
+                                <h3 className="uk-card-title">Media Top</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                            </div>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <div className="uk-card uk-card-default">
+                            <div className="uk-card-media-top">
+                                <img src="images/light.jpg" alt="tesr"/>
+                            </div>
+                            <div className="uk-card-body">
+                                <h3 className="uk-card-title">Media Top</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                            </div>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <div className="uk-card uk-card-default">
+                            <div className="uk-card-media-top">
+                                <img src="images/light.jpg" alt="tesr"/>
+                            </div>
+                            <div className="uk-card-body">
+                                <h3 className="uk-card-title">Media Top</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                            </div>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <div className="uk-card uk-card-default">
+                            <div className="uk-card-media-top">
+                                <img src="images/light.jpg" alt="tesr"/>
+                            </div>
+                            <div className="uk-card-body">
+                                <h3 className="uk-card-title">Media Top</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                            </div>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <div className="uk-card uk-card-default">
+                            <div className="uk-card-media-top">
+                                <img src="images/light.jpg" alt="tesr"/>
+                            </div>
+                            <div className="uk-card-body">
+                                <h3 className="uk-card-title">Media Top</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                            </div>
+                        </div>
+                      </div>
+                      
+                  </div>
+                </div>
             </div>
         </div>
     </div>
