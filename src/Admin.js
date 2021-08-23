@@ -28,6 +28,7 @@ export class Login extends Component  {
               var expires = "expires="+ d.toUTCString();
               document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
             }
+              setCookie("none",'KURO')
               setCookie("sessionT",response.data.token,30)
               setCookie("sessionID",response.data.id,30)
               window.location.replace('/admin/profile')

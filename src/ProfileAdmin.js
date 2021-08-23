@@ -30,15 +30,6 @@ function Data({ person }) {
             <tr>
                 <th>User</th>
                 <th>Entreprise</th>
-                {/* <th>Certificat négatif</th>
-                <th>Domiciliation</th>
-                <th>Statut et Cachet</th>
-                <th>Enregistrement des statuts</th>
-                <th>Demande de patente</th>
-                <th>Demande de RC</th>
-                <th>Demande IF</th>
-                <th>Les Annonces</th>
-                <th>Affiliation CNSS</th> */}
                 <th>User Infos</th>
             </tr>
         </thead>
@@ -79,10 +70,11 @@ function Profile() {
   }
 
   function isLogged() {
-    if (getCookie("sessionID") && getCookie("sessionT")) {
+    if (getCookie("sessionID") && getCookie("sessionT") && getCookie("none")) {
       if (
         getCookie("sessionID") !== "undefined" &&
-        getCookie("sessionT") !== "undefined"
+        getCookie("sessionT") !== "undefined" &&
+        getCookie("none") !== "undefined"
       )
         return 1;
       else {

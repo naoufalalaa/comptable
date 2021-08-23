@@ -28,6 +28,39 @@ function Data({ person }) {
     }
     const prenom = pe.prenom;
     const nom = pe.nom;
+
+    function PaperStatut(){
+      axios.get('https://comptableapi.herokuapp.com/paperAdvancements/'+pe.id).then(response=>{
+        document.getElementById('statut').innerHTML=`
+        <tr>
+          <td>${response.data[0].advancement}</td>
+          <td>${response.data[1].advancement}</td>
+          <td>${response.data[2].advancement}</td>
+          <td>${response.data[3].advancement}</td>
+          <td>${response.data[4].advancement}</td>
+          <td>${response.data[5].advancement}</td>
+          <td>${response.data[6].advancement}</td>
+          <td>${response.data[7].advancement}</td>
+          <td>${response.data[8].advancement}</td>
+        </tr>
+        `
+        console.log(response.data[0].advancement)
+      }).catch(err=>{})
+      return (
+        <tr id="statut">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      )
+    }
+
     return (
     <div align="center">
         <h3>
@@ -80,6 +113,26 @@ function Data({ person }) {
             </Link>
         </div>
         <AddEnt/>
+      </div>
+      <div className="uk-table-div">
+      <table className="uk-table uk-table-striped">
+        <thead>
+            <tr>
+              <th>Certificat négatif</th>
+              <th>Domiciliation</th>
+              <th>Statut et Cachet</th>
+              <th>Enregistrement des statuts</th>
+              <th>Demande de patente</th>
+              <th>Demande de RC</th>
+              <th>Demande IF</th>
+              <th>Les Annonces</th>
+              <th>Affiliation CNSS</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <PaperStatut/>
+        </tbody>
+      </table>
       </div>
     </div>
   );

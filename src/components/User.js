@@ -1,6 +1,15 @@
 import React, { useEffect,useState } from "react";
 import axios from "axios";
 import Info from './InfoUser'
+import Paper1 from './buttons/Paper1'
+import Paper2 from './buttons/Paper2'
+import Paper3 from './buttons/Paper3'
+import Paper4 from './buttons/Paper4'
+import Paper5 from './buttons/Paper5'
+import Paper6 from './buttons/Paper6'
+import Paper7 from './buttons/Paper7'
+import Paper8 from './buttons/Paper8'
+import Paper9 from './buttons/Paper9'
 import unavailable from '../assets/img/unavailable-user.png'
 import user from '../assets/img/user.png'
 function Data({ person ,loading }) {
@@ -134,92 +143,18 @@ function Data({ person ,loading }) {
            
             <div className="uk-width-2-3@s">
                 <div className="uk-card uk-card-default uk-card-body">
-                  <div className="uk-flex-center uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center" data-uk-grid>
-                      
-                      <div>
-                        <div className="uk-card uk-card-default">
-                            <div className="uk-card-media-top">
-                                <img src="images/light.jpg" alt="tesr"/>
-                            </div>
-                            <div className="uk-card-body">
-                                <h3 className="uk-card-title">Media Top</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            </div>
-                        </div>
-                      </div>
+                  <div className="uk-flex-center uk-child-width-1-3@l uk-child-width-1-2@s uk-text-center" data-uk-grid>
+                    
+                    <Paper1/>
+                    <Paper2/>
+                    <Paper3/>
+                    <Paper4/>
+                    <Paper5/>
+                    <Paper6/>
+                    <Paper7/>
+                    <Paper8/>
+                    <Paper9/>
 
-                      <div>
-                        <div className="uk-card uk-card-default">
-                            <div className="uk-card-media-top">
-                                <img src="images/light.jpg" alt="tesr"/>
-                            </div>
-                            <div className="uk-card-body">
-                                <h3 className="uk-card-title">Media Top</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            </div>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <div className="uk-card uk-card-default">
-                            <div className="uk-card-media-top">
-                                <img src="images/light.jpg" alt="tesr"/>
-                            </div>
-                            <div className="uk-card-body">
-                                <h3 className="uk-card-title">Media Top</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            </div>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <div className="uk-card uk-card-default">
-                            <div className="uk-card-media-top">
-                                <img src="images/light.jpg" alt="tesr"/>
-                            </div>
-                            <div className="uk-card-body">
-                                <h3 className="uk-card-title">Media Top</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            </div>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <div className="uk-card uk-card-default">
-                            <div className="uk-card-media-top">
-                                <img src="images/light.jpg" alt="tesr"/>
-                            </div>
-                            <div className="uk-card-body">
-                                <h3 className="uk-card-title">Media Top</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            </div>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <div className="uk-card uk-card-default">
-                            <div className="uk-card-media-top">
-                                <img src="images/light.jpg" alt="tesr"/>
-                            </div>
-                            <div className="uk-card-body">
-                                <h3 className="uk-card-title">Media Top</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            </div>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <div className="uk-card uk-card-default">
-                            <div className="uk-card-media-top">
-                                <img src="images/light.jpg" alt="tesr"/>
-                            </div>
-                            <div className="uk-card-body">
-                                <h3 className="uk-card-title">Media Top</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                            </div>
-                        </div>
-                      </div>
-                      
                   </div>
                 </div>
             </div>
@@ -248,10 +183,11 @@ function Profile() {
   
 
   function isLogged() {
-    if (getCookie("sessionID") && getCookie("sessionT")) {
+    if (getCookie("sessionID") && getCookie("sessionT") && getCookie("none")) {
       if (
         getCookie("sessionID") !== "undefined" &&
-        getCookie("sessionT") !== "undefined"
+        getCookie("sessionT") !== "undefined" &&
+        getCookie("none") !== "undefined"
       )
         return 1;
       else {
