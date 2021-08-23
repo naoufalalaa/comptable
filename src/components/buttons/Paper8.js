@@ -25,7 +25,7 @@ export default function Paper1() {
             id : id,
             token : token,
             UserId : userId,
-            PaperId : 7,
+            PaperId : 8,
             advancement : 'prêt'
         }
         axios.put('https://comptableapi.herokuapp.com/paperAdvancements/update',body)
@@ -44,7 +44,7 @@ export default function Paper1() {
             id : id,
             token : token,
             UserId : userId,
-            PaperId : 7,
+            PaperId : 8,
             advancement : 'en cours'
         }
         axios.put('https://comptableapi.herokuapp.com/paperAdvancements/update',body)
@@ -63,7 +63,7 @@ export default function Paper1() {
             id : id,
             token : token,
             UserId : userId,
-            PaperId : 7,
+            PaperId : 8,
             advancement : 'non demandé'
         }
         axios.put('https://comptableapi.herokuapp.com/paperAdvancements/update',body)
