@@ -28,6 +28,7 @@ export class BarLog extends Component {
         }
         function logout(){
             document.cookie = "sessionID= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+            document.cookie = "none= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
             document.cookie = "sessionT= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
             window.location.replace('/login')
         }

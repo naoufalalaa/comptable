@@ -30,7 +30,7 @@ function Data({ person }) {
       }
       document.getElementById('msg').innerHTML="<div class='uk-alert' uk-alert><a class='uk-alert-close' data-uk-close></a><p><div data-uk-spinner></div> Suppression ...</p></div>"
       try{
-        axios.delete("https://comptableapi.herokuapp.com/users/delete/admin",body)
+        axios.post("https://comptableapi.herokuapp.com/users/delete/admin",body)
         .then(()=>{
           document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>L'entreprise a été supprimée.</p></div>"
           window.location.replace('/admin/profile')

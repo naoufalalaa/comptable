@@ -6,6 +6,7 @@ import About from './About'
 import Login from './Login'
 import Sign from './Sign'
 import Profile from './Profile'
+import Delete from './DeleteU'
 import ProfileA from './ProfileAdmin'
 import Admin from './Admin'
 import User from './User'
@@ -25,7 +26,8 @@ function App() {
         <Route path="/admin/profile" component={ProfileA} />
         <Route path="/admin/user/:id" component={UserId} />
         <Route path="/sign" component={Sign} />
-        <Route path="/Profile" component={Profile} />
+        <Route exact path="/Profile" component={Profile} />
+        <Route exact path="/profile/delete" component={Delete} />
         <Route exact path="/User" component={User} />
         <Route path="/User/update" component={Upd} />
         <Route path="/Entreprise" component={Ent} />

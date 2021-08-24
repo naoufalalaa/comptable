@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Delete from "./delete";
+import {Link} from "react-router-dom"
 export class Profile extends Component{
     constructor(props) {
         super(props)
@@ -118,11 +118,10 @@ render() {
                             <button type="submit" id='submit' className="uk-button uk-button-secondary">Modify user</button>
                         </div>
                         <div className="uk-width-1-2@s">
-                            <button type="button" className="uk-button uk-button-danger" data-uk-toggle="target: #delete">Delete user</button>
+                            <Link to="/profile/delete" className="uk-button uk-button-danger" data-uk-toggle="target: #delete">Delete user</Link>
                         </div>
                     </div>
 
-                    <Delete/>
                 </form>
             </div>
         </div>
