@@ -33,13 +33,13 @@ const Home = ()=> {
                 <div align="center">
                     <img src={magic} width="50px" alt=""/>
                     <p className="uk-width-1-2@m">Créez un nouvel utilisateur pour un profil entreprise ou société.</p>
-                    <button className="uk-button uk-button-success">Sign in</button>
+                    <Link className="uk-button uk-button-success" to="/sign">Sign in</Link>
                 </div>
 
                 <div align="center">
                     <img src={flash} width="50px" alt=""/>
                     <p className="uk-width-1-2@m">Restez en contact avec votre comptable tout au-long des processus juridiques et économiques.</p>
-                    <button className="uk-button uk-button-success-outline">Profil</button>
+                    <Link className="uk-button uk-button-success-outline" to="/profile">Profil</Link>
                 </div>
 
             </div>

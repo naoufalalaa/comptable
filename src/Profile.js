@@ -214,7 +214,7 @@ function Profile() {
         <Data person={person} loading = {loading} />
       </div>
     );
-  } else window.location.replace("/");
+  } else window.location.replace("/login");
 }
 
 export default Profile;
