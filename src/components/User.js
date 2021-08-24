@@ -61,22 +61,22 @@ function Data({ person ,loading }) {
     const userId = window.location.pathname.split('/')[3];
     
     const prenom = pe.prenom;
-    function Papers(){
-      if(pe.validationComptable){
+    var Papers = ({re})=>{
+      if(re==="valide"){
         return(
-                  <div className="uk-flex-center uk-child-width-1-3@l uk-child-width-1-2@s uk-text-center" data-uk-grid>  
+            <div className="uk-flex-center uk-child-width-1-3@l uk-child-width-1-2@s uk-text-center" data-uk-grid>  
                     
-                    <Paper1/>
-                    <Paper2/>
-                    <Paper3/>
-                    <Paper4/>
-                    <Paper5/>
-                    <Paper6/>
-                    <Paper7/>
-                    <Paper8/>
-                    <Paper9/>
+              <Paper1/>
+              <Paper2/>
+              <Paper3/>
+              <Paper4/>
+              <Paper5/>
+              <Paper6/>
+              <Paper7/>
+              <Paper8/>
+              <Paper9/>
 
-                  </div>
+            </div>
         )
       }
       else{
@@ -125,6 +125,8 @@ function Data({ person ,loading }) {
         axios.post('https://comptableapi.herokuapp.com/users/valide',body)
         .then((response)=>{
           document.getElementById('msg').innerHTML="<div class='uk-alert-success' uk-alert><a class='uk-alert-close' data-uk-close></a><p>L'entreprise a été validé.</p></div>"
+          document.getElementById('validity').innerHTML='<span class="uk-green">Valide</span>'
+          window.location.replace('/admin/User/'+userId)
         })
         .catch((err)=>{ 
           console.log(err)
@@ -163,7 +165,7 @@ function Data({ person ,loading }) {
                       </div>
                       <div className="uk-grid-small" data-uk-grid>
                           <div className="uk-width-expand" data-uk-leader="fill: ">Validité :</div>
-                          <div>{isValid(pe.validationComptable)}</div>
+                          <div id='validity'>{isValid(pe.validationComptable)}</div>
                       </div>
                     </div>
                     <div>
@@ -178,7 +180,7 @@ function Data({ person ,loading }) {
            
             <div className="uk-width-2-3@s">
                 <div className="uk-card uk-card-default uk-card-body">
-                  <Papers/>
+                  <Papers re={pe.validationComptable}/>
                 </div>
             </div>
         </div>
