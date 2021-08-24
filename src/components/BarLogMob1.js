@@ -33,7 +33,15 @@ export class BarLog extends Component {
         }
         
         function UserLogged(props){
-
+            if(getCookie("none")){
+                return (
+                    <ul>
+                        <li className="uk-margin"><Link to="/admin/profile">Admin Panel</Link></li>
+                        <li className="uk-margin"><Link to="/Profile">Profile</Link></li>
+                        <li><Link to="" onClick={logout}>Logout</Link></li>
+                    </ul>
+                )
+            }
             return (
                 <ul>
                     <li className="uk-margin"><Link to="/Profile">Profile</Link></li>

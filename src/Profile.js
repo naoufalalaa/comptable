@@ -1,7 +1,21 @@
 import React, { useEffect,useState } from "react";
 import axios from "axios";
 import {Link} from 'react-router-dom'
-function Data({ person }) {
+function Data({ person, loading }) {
+  if(loading){
+    <div align="center">
+        <h3>Loading ...</h3>
+      <pre className="uk-width-1-2@s" id="infos">
+        <p><em>Entreprise : </em><i><div data-uk-spinner></div></i></p>
+        <p><em>Profile created On : </em><div data-uk-spinner></div></p>
+        <Link to = "/User/update">
+            <button className="uk-button uk-simple uk-width-1-1 uk-button-secondary">
+                <span data-uk-icon="cog"></span> User infos
+            </button>
+        </Link>
+      </pre>
+    </div>
+  }
     const pe = person
     function isEmpty(de){
         if(de === null || de ==='' || typeof(de) === "undefined") return(<i><Link className="uk-text-secondary" to="/Entreprise">Not yet defined  <span uk-icon="pencil"></span></Link></i>)
@@ -44,7 +58,6 @@ function Data({ person }) {
           <td>${response.data[8].advancement}</td>
         </tr>
         `
-        console.log(response.data[0].advancement)
       }).catch(err=>{})
       return (
         <tr id="statut">
@@ -114,6 +127,7 @@ function Data({ person }) {
         </div>
         <AddEnt/>
       </div>
+      <h3>État d'avancement des documents comptable</h3>
       <div className="uk-table-div">
       <table className="uk-table uk-table-striped">
         <thead>
@@ -140,6 +154,7 @@ function Data({ person }) {
 
 function Profile() {
   const [person, setProfile] = useState({});
+  const [loading , setLoading] = useState(false)
 
   function getCookie(cname) {
     var name = cname + "=";
@@ -181,11 +196,13 @@ function Profile() {
     document.getElementById("about").classList.remove("uk-active");
     document.getElementById("home").classList.remove("uk-active");
     (async () => {
+      setLoading(true)
       let dd = await axios.get(
         "https://comptableapi.herokuapp.com/users/ent/" + id
       );
       dd = dd.data;
       setProfile(dd);
+      setLoading(false)
     })();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -194,7 +211,7 @@ function Profile() {
     return (
       <div align="center" className="uk-padding">
         
-        <Data person={person} />
+        <Data person={person} loading = {loading} />
       </div>
     );
   } else window.location.replace("/");

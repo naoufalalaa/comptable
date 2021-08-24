@@ -79,6 +79,33 @@ function Data({ person ,loading }) {
         return (<span style={{color : "red"}}>{e}</span>)
       }else return (<span>Not yet</span>)
     }
+    function Delete(){
+      function delet(){
+        document.getElementById('msg').innerHTML="<div class='uk-alert' uk-alert><a class='uk-alert-close' data-uk-close></a><p><div data-uk-spinner></div> Suppression ...</p></div>"
+        let body={
+          id:getCookie("sessionID"),
+          token : getCookie("sessionT"),
+          idAS : window.location.pathname.split('/')[3]
+        }
+        try{
+          axios.delete("https://comptableapi.herokuapp.com/users/delete/admin",body)
+          .then(()=>{
+            document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>L'entreprise a été supprimée.</p></div>"
+            window.location.replace('/admin/profile')
+          })
+          .catch(err => {
+            document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>L'entreprise n'a pas été supprimée.<br/>erreur : "+err+"</p></div>"
+          })
+        }catch(err){
+          console.error(err)
+        }
+      }
+      if(pe.role==="user"){
+        return (<button onClick={delet} className="uk-button uk-button-danger">Delete User</button>)
+      }else{
+        return (<button disabled className="uk-button uk-button-danger">Delete User</button>)
+      }
+    }
     function Validate(){
       function validat(){
         document.getElementById('msg').innerHTML="<div class='uk-alert' uk-alert><a class='uk-alert-close' data-uk-close></a><p><div data-uk-spinner></div> Chargement ...</p></div>"
@@ -93,7 +120,6 @@ function Data({ person ,loading }) {
         try{
         axios.post('https://comptableapi.herokuapp.com/users/valide',body)
         .then((response)=>{
-          console.log(response)
           document.getElementById('msg').innerHTML="<div class='uk-alert-success' uk-alert><a class='uk-alert-close' data-uk-close></a><p>L'entreprise a été validé.</p></div>"
         })
         .catch((err)=>{ 
@@ -107,7 +133,7 @@ function Data({ person ,loading }) {
       if(pe.validationComptable ==='en cours'){
         return (<button onClick={validat} id='i' className="uk-button uk-button-success">Validate</button>)
       }
-      else return (<button className="uk-button" disabled>Validate</button>)
+      else return (<button className="uk-button uk-button-primary" disabled>Validate</button>)
     }
     return (
     <div align="center">
@@ -136,6 +162,9 @@ function Data({ person ,loading }) {
                     </div>
                     <div>
                       <Validate/>
+                    </div>
+                    <div>
+                      <Delete/>
                     </div>
                   </div>
                 </div>

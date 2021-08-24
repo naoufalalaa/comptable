@@ -33,7 +33,22 @@ export class BarLog extends Component {
         }
         
         function UserLogged(){
-            
+            if(getCookie("none")){
+                return (
+                    <ul className="uk-navbar-nav" id="loginS">
+                        <li>
+                            <Link to="">Profile<span data-uk-icon="icon: chevron-down;"></span></Link>
+                            <div className="uk-navbar-dropdown">
+                                <ul className="uk-nav uk-navbar-dropdown-nav">
+                                    <li><Link to="/admin/profile">Admin Panel</Link></li>
+                                    <li><Link to="/Profile">Profile</Link></li>
+                                    <li><Link to="" onClick={logout} >Logout</Link></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                )
+            }
             return (
                 <ul className="uk-navbar-nav" id="loginS">
                     <li>

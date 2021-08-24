@@ -50,7 +50,7 @@ export default function Paper1() {
         }
         axios.put('https://comptableapi.herokuapp.com/paperAdvancements/update',body)
         .then(response=>{
-            document.getElementById('encours').setAttribute('checked',true)
+            document.getElementById('encours2').setAttribute('checked',true)
             document.getElementById('pret2').removeAttribute('checked')
             document.getElementById('nondemande2').removeAttribute('checked')
         }
@@ -71,7 +71,7 @@ export default function Paper1() {
         .then( ()=>{
             document.getElementById('nondemande2').setAttribute('checked',true)
             document.getElementById('pret2').removeAttribute('checked')
-            document.getElementById('encours').removeAttribute('checked')
+            document.getElementById('encours2').removeAttribute('checked')
         }
         )
         .catch(err=>console.log(err))
@@ -103,7 +103,7 @@ export default function Paper1() {
         })
         return (
             <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                <label><input name='state2' id="encours2" className="uk-radio"  value="en cours" onClick={encours2} type="radio"/> En cours</label><br/>
+                <label><input name='state2' id="encours2" className="uk-radio" value="en cours" onClick={encours2} type="radio"/> En cours</label><br/>
                 <label><input name='state2' id="pret2" className="uk-radio" value="pret" onClick={validate2} type="radio"/> Prêt</label><br/>
                 <label><input name='state2' id="nondemande2" className="uk-radio" value="nondemande" onClick={nonDemande2} type="radio"/> Non Demandé</label>
             </div>
