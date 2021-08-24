@@ -3,25 +3,27 @@ import axios from "axios";
 import {Link} from 'react-router-dom'
 function Data({ person, loading }) {
   if(loading){
+    return(
     <div align="center">
         <h3>Loading ...</h3>
       <pre className="uk-width-1-2@s" id="infos">
         <p><em>Entreprise : </em><i><div data-uk-spinner></div></i></p>
         <p><em>Profile created On : </em><div data-uk-spinner></div></p>
-        <Link to = "/User/update">
+        <Link to = "">
             <button className="uk-button uk-simple uk-width-1-1 uk-button-secondary">
                 <span data-uk-icon="cog"></span> User infos
             </button>
         </Link>
       </pre>
-    </div>
+    </div>)
   }
     const pe = person
+    const prenom = pe.prenom;
+    const nom = pe.nom;
     function isEmpty(de){
         if(de === null || de ==='' || typeof(de) === "undefined") return(<i><Link className="uk-text-secondary" to="/Entreprise">Not yet defined  <span uk-icon="pencil"></span></Link></i>)
         return (<strong>{de}</strong> )
     }
-    
     function isValide(validationComptable){
       if(validationComptable === "en cours") return(<i className="fas fa-2x fa-clock wait"></i>)
       if(validationComptable === "valide") return(<i className="fas fa-2x fa-check-circle done"></i>)
@@ -40,8 +42,7 @@ function Data({ person, loading }) {
       )
       else return null
     }
-    const prenom = pe.prenom;
-    const nom = pe.nom;
+    
 
     function PaperStatut(){
       axios.get('https://comptableapi.herokuapp.com/paperAdvancements/'+pe.id).then(response=>{
@@ -150,6 +151,7 @@ function Data({ person, loading }) {
       </div>
     </div>
   );
+
 }
 
 function Profile() {
@@ -204,17 +206,14 @@ function Profile() {
       setProfile(dd);
       setLoading(false)
     })();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   if (isLogged()) {
     return (
       <div align="center" className="uk-padding">
-        
         <Data person={person} loading = {loading} />
       </div>
     );
   } else window.location.replace("/login");
 }
-
 export default Profile;

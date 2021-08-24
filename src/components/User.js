@@ -13,6 +13,7 @@ import Paper8 from './buttons/Paper8'
 import Paper9 from './buttons/Paper9'
 import unavailable from '../assets/img/unavailable-user.png'
 import user from '../assets/img/user.png'
+import { Link } from "react-router-dom";
 function Data({ person ,loading }) {
   if(loading){
     return (
@@ -33,11 +34,11 @@ function Data({ person ,loading }) {
                     <div>
                       <div className="uk-grid-small" data-uk-grid>
                         <div className="uk-width-expand" data-uk-leader="fill: ">Entreprise :</div>
-                        <div>load</div>
+                        <div><div data-uk-spinner></div></div>
                       </div>
                       <div className="uk-grid-small" data-uk-grid>
                           <div className="uk-width-expand" data-uk-leader="fill: ">Validité :</div>
-                          <div>load</div>
+                          <div><div data-uk-spinner></div></div>
                       </div>
                     </div>
                     <div>
@@ -48,7 +49,7 @@ function Data({ person ,loading }) {
             </div>
            
             <div className="uk-width-2-3@s">
-                <div className="uk-card uk-card-default uk-card-body">Item</div>
+                <div className="uk-card uk-card-default uk-card-body"><div data-uk-spinner></div></div>
             </div>
         </div>
     </div>
@@ -165,12 +166,14 @@ function Data({ person ,loading }) {
     }
     return (
     <div align="center">
+
         <h3>
           <strong>User Profile</strong>
         </h3>
         <div id="msg"></div>
         <div className="uk-grid uk-text-center" data-uk-grid>
             <div className="uk-width-1-3@s">
+        <Link to="/admin/profile" className="uk-margin uk-button uk-button-light"><i class="fas fa-angle-left"></i> Go back</Link>
                 <div className="uk-card uk-card-default uk-card-body">
                   <div className="uk-text-center">
                     <img src={user} alt={prenom+' '+pe.nom} width="100px"/>
@@ -207,6 +210,7 @@ function Data({ person ,loading }) {
     </div>
   );
 }
+
 function getCookie(cname) {
   var name = cname + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
@@ -222,6 +226,7 @@ function getCookie(cname) {
   }
   return false;
 }
+
 function Profile() {
   const [person, setProfile] = useState({});
   const [loading , setLoading] = useState(false)

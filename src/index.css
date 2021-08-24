@@ -125,3 +125,6 @@ pre{
   background-attachment: fixed;
   background-size: cover;
 }
+.uk-button-light{
+  background-color: #f4f4f4;
+}
