@@ -1,4 +1,5 @@
 import React, { useEffect,useState } from "react";
+import paper from '../assets/img/dislike.png'
 import axios from "axios";
 import Info from './InfoUser'
 import Paper1 from './buttons/Paper1'
@@ -58,6 +59,33 @@ function Data({ person ,loading }) {
     const userId = window.location.pathname.split('/')[3];
     
     const prenom = pe.prenom;
+    function Papers(){
+      if(pe.validationComptable){
+        return(
+                  <div className="uk-flex-center uk-child-width-1-3@l uk-child-width-1-2@s uk-text-center" data-uk-grid>  
+                    
+                    <Paper1/>
+                    <Paper2/>
+                    <Paper3/>
+                    <Paper4/>
+                    <Paper5/>
+                    <Paper6/>
+                    <Paper7/>
+                    <Paper8/>
+                    <Paper9/>
+
+                  </div>
+        )
+      }
+      else{
+        return(
+          <div>
+            <h2>Pas d'entreprise</h2>
+            <img src={paper} alt="no data" width="200px" />
+          </div>
+        )
+      }
+    }
     if(typeof(person.nom)==="undefined" ) {
       return (
         <div align="center">
@@ -172,19 +200,7 @@ function Data({ person ,loading }) {
            
             <div className="uk-width-2-3@s">
                 <div className="uk-card uk-card-default uk-card-body">
-                  <div className="uk-flex-center uk-child-width-1-3@l uk-child-width-1-2@s uk-text-center" data-uk-grid>
-                    
-                    <Paper1/>
-                    <Paper2/>
-                    <Paper3/>
-                    <Paper4/>
-                    <Paper5/>
-                    <Paper6/>
-                    <Paper7/>
-                    <Paper8/>
-                    <Paper9/>
-
-                  </div>
+                  <Papers/>
                 </div>
             </div>
         </div>
