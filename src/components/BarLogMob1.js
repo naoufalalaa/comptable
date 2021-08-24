@@ -32,7 +32,7 @@ export class BarLog extends Component {
             window.location.replace('/login')
         }
         
-        function UserLogged(props){
+        function UserLogged(){
             if(getCookie("none")){
                 return (
                     <ul>
