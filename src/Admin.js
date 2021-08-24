@@ -86,19 +86,19 @@ export class Login extends Component  {
                 <h3>Connectez-vous</h3>
                 <div id="msg"></div>
                     <div className="uk-margin">
-                        <div className="uk-inline uk-width-1-2">
+                        <div className="uk-inline uk-width-1-2@s">
                             <span className="uk-form-icon" uk-icon="icon: user"></span>
                             <input name="email" placeholder="E-mail" value={email} onChange={this.changeHandler} className="uk-input" id="user" type="email"/>
                         </div>
                     </div>
 
                     <div className="uk-margin">
-                        <div className="uk-inline uk-width-1-2">
+                        <div className="uk-inline uk-width-1-2@s">
                             <span className="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
                             <input name="password" placeholder="Password" value={password} onChange={this.changeHandler} className="uk-input" id="password" type="password"/>
                         </div>
                     </div>
-                    <button type="submit" id="submit" className="uk-button uk-button-success-outline uk-width-1-4">Connectez-vous</button>
+                    <button type="submit" id="submit" className="uk-button uk-button-success-outline uk-width-1-4@m uk-width-1-2@s">Connectez-vous</button>
                 </form>
             </div>
         );

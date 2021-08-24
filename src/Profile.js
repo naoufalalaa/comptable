@@ -7,15 +7,16 @@ function Data({ person, loading }) {
     <div align="center">
         <h3>Loading ...</h3>
       <pre className="uk-width-1-2@s" id="infos">
-        <p><em>Entreprise : </em><i><div data-uk-spinner></div></i></p>
+        <p><em>Entreprise : </em><div data-uk-spinner></div></p>
         <p><em>Profile created On : </em><div data-uk-spinner></div></p>
-        <Link to = "">
+        <Link to ="">
             <button className="uk-button uk-simple uk-width-1-1 uk-button-secondary">
                 <span data-uk-icon="cog"></span> User infos
             </button>
         </Link>
       </pre>
-    </div>)
+    </div>
+    )
   }
     const pe = person
     const prenom = pe.prenom;
@@ -79,7 +80,6 @@ function Data({ person, loading }) {
     <div align="center">
         <h3>
           Welcome <strong>{prenom+' '+nom} </strong>
-
         </h3>
       <pre className="uk-width-1-2@s" id="infos">
         <p><em>Entreprise : </em><i>{isEmpty(pe.nomE)}</i></p>

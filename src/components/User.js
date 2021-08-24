@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from "react";
 import paper from '../assets/img/dislike.png'
 import axios from "axios";
+import Delete from './buttons/DeleteButt'
 import Info from './InfoUser'
 import Paper1 from './buttons/Paper1'
 import Paper2 from './buttons/Paper2'
@@ -108,33 +109,7 @@ function Data({ person ,loading }) {
         return (<span style={{color : "red"}}>{e}</span>)
       }else return (<span>Not yet</span>)
     }
-    function Delete(){
-      function delet(){
-        document.getElementById('msg').innerHTML="<div class='uk-alert' uk-alert><a class='uk-alert-close' data-uk-close></a><p><div data-uk-spinner></div> Suppression ...</p></div>"
-        let body={
-          id:getCookie("sessionID"),
-          token : getCookie("sessionT"),
-          idAS : window.location.pathname.split('/')[3]
-        }
-        try{
-          axios.delete("https://comptableapi.herokuapp.com/users/delete/admin",body)
-          .then(()=>{
-            document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>L'entreprise a été supprimée.</p></div>"
-            window.location.replace('/admin/profile')
-          })
-          .catch(err => {
-            document.getElementById('msg').innerHTML="<div class='uk-alert-danger' uk-alert><a class='uk-alert-close' data-uk-close></a><p>L'entreprise n'a pas été supprimée.<br/>erreur : "+err+"</p></div>"
-          })
-        }catch(err){
-          console.error(err)
-        }
-      }
-      if(pe.role==="user"){
-        return (<button onClick={delet} className="uk-button uk-button-danger">Delete User</button>)
-      }else{
-        return (<button disabled className="uk-button uk-button-danger">Delete User</button>)
-      }
-    }
+    
     function Validate(){
       function validat(){
         document.getElementById('msg').innerHTML="<div class='uk-alert' uk-alert><a class='uk-alert-close' data-uk-close></a><p><div data-uk-spinner></div> Chargement ...</p></div>"
@@ -173,7 +148,7 @@ function Data({ person ,loading }) {
         <div id="msg"></div>
         <div className="uk-grid uk-text-center" data-uk-grid>
             <div className="uk-width-1-3@s">
-        <Link to="/admin/profile" className="uk-margin uk-button uk-button-light"><i class="fas fa-angle-left"></i> Go back</Link>
+        <Link to="/admin/profile" className="uk-margin uk-button uk-button-light"><i className="fas fa-angle-left"></i> Go back</Link>
                 <div className="uk-card uk-card-default uk-card-body">
                   <div className="uk-text-center">
                     <img src={user} alt={prenom+' '+pe.nom} width="100px"/>
