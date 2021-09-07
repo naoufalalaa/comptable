@@ -19,6 +19,20 @@ npx create-reactapp
 ```
 ## assets
 
+### Used Dependencies 
+> react-router-dom 
+
+```
+npm install react-router-dom
+```
+Allow us to use ***{Link , BrowserRouter , Route , Switch }***
+
+> axios
+```
+npm install axios
+```
+Allow us to use fetch functions and promises to **get** OR **post** OR **put** OR **delete** data
+
 ### Landing Page
  
 ![interface](https://i.ibb.co/fqcN7d7/Capture-d-e-cran-2021-09-05-a-21-54-49.png) Contains different informations about the utility and tools on the plateform, explains the ownership. **Technical aspect** we can specify that different proprieties had been changed and modified in a way to suit the modern templating designs.
