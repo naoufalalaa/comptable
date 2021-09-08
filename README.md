@@ -18,8 +18,14 @@ Furthermore this application is using a very powerful technology which is reactJ
 npx create-reactapp
 ```
 ## assets
+### API
+>https://comptableapi.herokuapp.com/
 
-### Used Dependencies 
+Built with **EXPRESSjs**
+
+![API](https://i.ibb.co/n3chdyY/logo-express.png)
+
+### Dependencies Used
 > react-router-dom 
 
 ```
@@ -32,6 +38,11 @@ Allow us to use ***{Link , BrowserRouter , Route , Switch }***
 npm install axios
 ```
 Allow us to use fetch functions and promises to **get** OR **post** OR **put** OR **delete** data
+```js
+axios.get('https://comptableapi.herokuapp.com/users')
+axios.post('https://comptableapi.herokuapp.com/users/signup', this.state)
+axios.put('https://comptableapi.herokuapp.com/users/update', this.state)
+```
 
 ### Landing Page
  
@@ -54,5 +65,31 @@ With error message if the combinaison is fault.
 - Utilisateur introuvable.
 ```
 
+### User Profile
+*this is a state where the user didn't create his entreprise yet..*
+![Profile](https://i.ibb.co/vstKdyP/profile-Before.png) 
+
+### Create entreprise
+![createENT](https://i.ibb.co/YPkSQqh/create-ENT.png) 
+
+### User Profile after Entreprise created
+
+![createdENT](https://i.ibb.co/R997q5Y/Created-ENT.png) 
 
 
+*****Technically, the administrator is the only one that has the right to confirm the entreprise after contacting the owner or manager via their personnal information submited in the earlier forms*****
+
+we access the admin login via : https://comp-able.herokuapp.com/admin
+![admin](https://i.ibb.co/KDSMxqZ/admin-Profile.png)
+### User check
+> Before validation
+
+![validation](https://i.ibb.co/L83Q36x/user.png)
+
+> After validation
+**papers are created after validatig the user**
+![validate](https://user-images.githubusercontent.com/61352259/132488875-760ec40f-27d4-4a6d-83a9-cef21f533423.png)
+
+### User side
+
+![userSide](https://user-images.githubusercontent.com/61352259/132489008-a732ee91-e188-45b8-a107-bb1209137b28.png)
